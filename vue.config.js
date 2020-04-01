@@ -9,6 +9,11 @@ module.exports = {
                 'views': '@views',
 
             }
+        },
+        externals: {
+            'vue': 'Vue',
+            'element-ui':'ELEMENT',
+            'jquery':'jQuery'
         }
     }
 }
