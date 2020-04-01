@@ -1,1 +1,24 @@
-dd点餐的ui设计仓库，dd点餐是基于springboot+vue.js的前后端分离项目，这是前端仓库
+# test01
+
+## Project setup
+```
+npm install
+```
+
+### Compiles and hot-reloads for development
+```
+npm run serve
+```
+
+### Compiles and minifies for production
+```
+npm run build
+```
+
+### Lints and fixes files
+```
+npm run lint
+```
+
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).
