@@ -1,6 +1,6 @@
 <template>
 <div>
-<nav-bar class="navbar"><div slot="right">设置</div></nav-bar>
+<nav-bar><div slot="right" class="navbar">设置</div></nav-bar>
 
 <nav-profile/>
 <body-profile/>
@@ -29,11 +29,7 @@ export default {
 
 <style scoped>
 .navbar{
-    position: fixed;
-    left: 0;
-    right: 20px;
-    top: 0;
-    font-size: 15px;
+   margin-right:20px;
 
 }
 </style>
