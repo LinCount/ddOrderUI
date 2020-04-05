@@ -1,5 +1,5 @@
 module.exports = {
-    publicPath:'./',//打包时把路径改为././
+    publicPath:'././',//打包时把路径改为././
     configureWebpack: {
         resolve: {
             alias: {
