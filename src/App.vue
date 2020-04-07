@@ -1,8 +1,8 @@
 <template>
   <div id="app" class="wrapper">
-    <router-view/>
+    <router-view />
     <!--<main-tab-bar class="aa" />  -->
-    <main-tab-bar />
+    <main-tab-bar class="aatab" />
   </div>
 </template>
 

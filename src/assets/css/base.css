@@ -55,9 +55,10 @@ a {
   float: right;
 }
 
-.aa {
+.aatab {
   position: fixed;
   bottom: 0px;
+  display: block;
 }
 /*
 个人中心与分享基本样式

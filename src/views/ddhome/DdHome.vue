@@ -13,12 +13,13 @@
 
     <div class="photo">
         <a href="#">
-         <img src="~assets/img/index/2222.png" @mousedown="move" class="photo1" usemap="#map" ismap="ismap">
+          <!-- usemap="#map"  -->
+         <img src="~assets/img/index/map.png" @mousedown="move" usemap="#map" ismap="ismap"  class="photo1" >
         </a>
 
          <map name="map">
-            <area shape="rect" coords="362,52,492,136" href="javascript:;" alt="hah" @click="newcanteen">
-            <area shape="rect" coords="259,395,391,482" href="javascript:;" alt="hah" @click="oldcanteen">
+            <area shape="rect" coords="916,85,1125,214" href="javascript:;" alt="hah" @click="newcanteen">
+            <area shape="rect" coords="590,489,808,622" href="javascript:;" alt="hah" @click="oldcanteen">
         </map>
     </div>
     
@@ -32,6 +33,7 @@
     <!-- </div> -->
   </div>
 </template>
+
 <script>
 export default {
   name:"DdHome",
@@ -45,7 +47,7 @@ export default {
   },
   methods:{
     move(e) {
-      // console.log("1");
+      this.input='你按住了地图';
       let odiv = e.target;// 获取目标元素
       // console.log("鼠标位置和标签边的距离"+e.clientX);
       // console.log("鼠标位置和标签边的距离"+e.clientY);
@@ -57,17 +59,21 @@ export default {
       let x = e.clientX - odiv.offsetLeft;
 			let y = e.clientY - odiv.offsetTop;
       
-      //onmousemove鼠标 移动时
+      //mousemove鼠标 移动时
       document.onmousemove = (e) => {
+        this.input='你拖动了地图';
         //这里的clientX是新的鼠标位置了，left是从点击到移动的距离
         let left = e.clientX - x;
         let top = e.clientY - y;
         
         odiv.style.left = left + "px";
         odiv.style.top = top + "px"
-      }
-      //onmouseup鼠标松开时
+      };
+
+      //monmouseup鼠标松开时
       document.onmouseup = ()=> {
+        this.input='你松开了地图';
+
         document.onmousemove=null;
         document.onmousedown=null;
       }
@@ -110,7 +116,6 @@ export default {
   justify-content: center;
   overflow: hidden;
   background-color:#f6f6f6;
-  overflow: hidden;
 
 } 
 .input {
@@ -119,18 +124,18 @@ export default {
 }
 .photo {
   background-color: #f6f6f6;
-  height: 100%-44;
+  /* height: 100%-44; */
   position: absolute;
   top: 54px;
   bottom: 0px;
-  left: 0px;
+  /* left: 0px; */
   overflow: hidden;
   width: 100%;
 }
 .photo1 {
   position: relative;
   left: 0;
-  overflow-y: hidden;
+  top:0;
 }
 
 .change1 {
