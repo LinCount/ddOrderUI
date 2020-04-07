@@ -30,13 +30,13 @@
                 <div style="height:5px;background-color:#f3f3f3"> </div>
             </div>
         </div>
-        <img src="~assets/img/order/1111.png" @onmousedown="aa" usemap="#map"  >
-        <img src="~assets/img/order/1111.png" @mousemove="aa2">
-        <img src="~assets/img/order/1111.png" @mouseup="aa3">
+        <img src="~assets/img/order/1111.png" @touchstart="aa" usemap="#map"  >
+        <img src="~assets/img/order/1111.png" @touchmove="aa2">
+        <img src="~assets/img/order/1111.png" @touchend="aa3">
         
-         <!-- <map name="map">
+         <map name="map">
             <area shape="rect" coords="0,0,100,100" href="javascript:;" alt="hah" @click="aa4">
-        </map> -->
+        </map>
 
     </div>
 </template>
@@ -46,7 +46,7 @@ export default {
     name:"DdOrder",
     data() {
         return {
-            hh:'订单',
+            hh:'用的mosedown',
             color:['#8164ff','#0eb2fe','#e886b1','#e88888','#66d6b5','#87aee8'],
             //freight:运费,totalproduce:总件数,sum:总价,person:配送人编号,state:订单状态（正在配送/已完成）
             order:[
@@ -78,14 +78,15 @@ export default {
         },
         aa4() {
             this.hh='按住了 +点图片了';
+            console.log("1");
 
         }
     }
 }
 </script>
+
+
 <style scoped>
-
-
 .ddorder {
     overflow: noscroll;
     /* 抵掉上固定定位 */
