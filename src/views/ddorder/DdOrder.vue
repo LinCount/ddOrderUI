@@ -30,13 +30,16 @@
                 <div style="height:5px;background-color:#f3f3f3"> </div>
             </div>
         </div>
-        <img src="~assets/img/order/1111.png" @touchstart="aa" usemap="#map"  >
+        <!-- <img src="~assets/img/order/1111.png" @touchdown="aa" usemap="#map"> -->
         <img src="~assets/img/order/1111.png" @touchmove="aa2">
-        <img src="~assets/img/order/1111.png" @touchend="aa3">
+        <!-- <img src="~assets/img/order/1111.png" @touchend="aa3"> -->
         
-         <map name="map">
+         <!-- <map name="map">
             <area shape="rect" coords="0,0,100,100" href="javascript:;" alt="hah" @click="aa4">
-        </map>
+        </map> -->
+
+        <!-- <div style="height:50px;background-color:black;" @ontouchstart="aa" ></div>
+        <div style="height:50px;background-color:red;" @onmousedown="aa2" ></div> -->
 
     </div>
 </template>
@@ -46,7 +49,7 @@ export default {
     name:"DdOrder",
     data() {
         return {
-            hh:'用的mosedown',
+            hh:'用的ontouch+onmouse',
             color:['#8164ff','#0eb2fe','#e886b1','#e88888','#66d6b5','#87aee8'],
             //freight:运费,totalproduce:总件数,sum:总价,person:配送人编号,state:订单状态（正在配送/已完成）
             order:[
