@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import area from '../components/common/other/area'
+import ddarea from '../views/ddhome/ddarea'
 
 const Home = () => import('../views/ddhome/DdHome')
 const Order = () => import('../views/ddorder/DdOrder')
@@ -33,8 +33,8 @@ const routes = [
     component: DdProfile
   },
   {
-    path: '/area',
-    component: area
+    path: '/ddarea',
+    component: ddarea
   }
 ]
 const router = new VueRouter({

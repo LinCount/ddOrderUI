@@ -1,8 +1,11 @@
 <template>
-    <div class="area">
+    <div class="ddarea">
         <div class="top">
-            <span> 《 </span>
-            <span style="line-height:44px;margin-left:10px;font-size:16px;font-weight:400;color:black">{{thearea}}</span>
+            <div style="display:flex;align-items:center">
+                <img src="~assets/img/home/fanhui.png" @click="$router.go(-1)" style="height:26px;margin-left:10px;">
+                <span style="line-height:44px;font-size:16px;font-weight:400;color:black">{{thearea}}</span>
+            </div>
+            
         </div>
         
         <div class="title">
@@ -89,12 +92,16 @@
             </div>
         </div>
         
+        <button class="xxx" @click="aa">11</button>
+        <button class="xxx1">11</button>
     </div>
 </template>
 
 <script>
+import $ from 'jquery'
+
 export default {
-    name:'area',
+    name:'ddarea',
     data() {
         return {
             activeName: 'second',
@@ -108,11 +115,23 @@ export default {
         };
         },
         created() {
-           console.log(this.$route.query.thearea);
-
+        //    console.log(this.$route.query.thearea);
            this.thearea=this.$route.query.thearea;
+
+       
+
+        
         },
         methods: {
+        aa() {
+            console.log("1");
+             //    执行JQ
+            $(document).ready(function(){
+                    $(".xxx1").hide();
+            })
+            console.log("2");
+
+        },
         changeisall() {
             this.isall=!this.isall;
             this.iskind=false;
@@ -140,6 +159,7 @@ export default {
     height: 44px;
     position: fixed;
     top: 0px;
+    justify-content: center;
     
 }
 .title {

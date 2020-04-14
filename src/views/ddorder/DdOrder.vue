@@ -49,7 +49,7 @@ export default {
     name:"DdOrder",
     data() {
         return {
-            hh:'用的ontouch+onmouse',
+            hh:'订单',
             color:['#8164ff','#0eb2fe','#e886b1','#e88888','#66d6b5','#87aee8'],
             //freight:运费,totalproduce:总件数,sum:总价,person:配送人编号,state:订单状态（正在配送/已完成）
             order:[

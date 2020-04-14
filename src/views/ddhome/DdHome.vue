@@ -115,7 +115,7 @@ export default {
     //点击新饭
     newcanteen() {
       this.$router.push({
-        path:'/area',
+        path:'/ddarea',
         query:{
           thearea:'新饭'
         }
@@ -123,7 +123,7 @@ export default {
     },
     oldcanteen() {
       this.$router.push({
-        path:'/area',
+        path:'/ddarea',
         query:{
           thearea:'旧饭'
         }
