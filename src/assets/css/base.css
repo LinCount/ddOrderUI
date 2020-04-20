@@ -55,13 +55,8 @@ a {
   float: right;
 }
 
-.aatab {
-  position: fixed;
-  bottom: 0px;
-  display: block;
-}
 /*
-个人中心与分享基本样式
+个人中心/分享/设置基本样式
 */
 .aui-flex {
   display: -webkit-box;

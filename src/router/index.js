@@ -1,11 +1,11 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import area from '../components/common/other/area'
 
 const Home = () => import('../views/ddhome/DdHome')
 const Order = () => import('../views/ddorder/DdOrder')
 const Share = () => import('../views/ddshare/DdShare')
 const DdProfile = () => import('../views/ddprofile/DdProfile')
+const SetProfile = () => import('../views/ddprofile/childprofile/SetProfile')
 
 // 1.安装插件
 Vue.use(VueRouter)
@@ -33,8 +33,8 @@ const routes = [
     component: DdProfile
   },
   {
-    path: '/area',
-    component: area
+    path: '/profile/set',
+    component:SetProfile
   }
 ]
 const router = new VueRouter({
