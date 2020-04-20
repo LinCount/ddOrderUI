@@ -6,6 +6,7 @@ const Home = () => import('../views/ddhome/DdHome')
 const Order = () => import('../views/ddorder/DdOrder')
 const Share = () => import('../views/ddshare/DdShare')
 const DdProfile = () => import('../views/ddprofile/DdProfile')
+const SetProfile = () => import('../views/ddprofile/childprofile/SetProfile')
 
 // 1.安装插件
 Vue.use(VueRouter)
@@ -35,7 +36,12 @@ const routes = [
   {
     path: '/ddarea',
     component: ddarea
+  },
+  {
+    path: '/profile/set',
+    component:SetProfile
   }
+
 ]
 const router = new VueRouter({
   routes,

@@ -1,6 +1,6 @@
 <template>
 <div>
-<nav-bar><div slot="right" class="navbar">设置</div></nav-bar>
+<nav-bar><div slot="right" class="navbar" @click="setprclick()">设置</div></nav-bar>
 
 <nav-profile/>
 <body-profile/>
@@ -23,6 +23,17 @@ export default {
         BodyProfile,
 
     },
+    data(){
+        return{
+        }
+    },
+    methods:{
+        setprclick(){
+        this.$EventBus.$emit('setprclick') 
+        this.$router.replace('/profile/set') 
+              
+        }
+    }
 }
 
 </script>

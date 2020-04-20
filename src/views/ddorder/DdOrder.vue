@@ -1,11 +1,18 @@
 <template>
-    <div class="ddorder">
-        <div class="top">
+    <div class="ddorder" >
+        <!-- 顶部标题栏 -->
+        <div class="top" @click="bb1" >
             <span style="line-height:44px;margin-left:10px;font-size:16px;font-weight:400;color:black">{{hh}}</span>
         </div>
 
-        <div class="order" >
-            <div v-for="item in order" :key="item.id" class="order1">
+        <!-- 右下角回到顶部 -->
+        <diV class="gotop" @click="bbb" v-show="isshow">
+            <img src="~assets/img/home/top.png" style="height:40px">
+        </diV>
+
+        <!-- 顶部 -->
+        <div class="order"  >
+            <div v-for="item in order" :key="item.id" class="order1" >
                 <div class="head">
                     <img src="~assets/img/order/shop.png" style="height:26px">
                     <span >{{item.shop}}</span>
@@ -26,12 +33,14 @@
                     <el-button size='small' round>查看详情</el-button>
                     <el-button type="primary" size='small' plain round>再次购买</el-button>
                 </div>
+
                 <!-- 阴影条 -->
                 <div style="height:5px;background-color:#f3f3f3"> </div>
             </div>
         </div>
+
         <!-- <img src="~assets/img/order/1111.png" @touchdown="aa" usemap="#map"> -->
-        <img src="~assets/img/order/1111.png" @touchmove="aa2">
+        <!-- <img src="~assets/img/order/1111.png" @touchmove="aa2"> -->
         <!-- <img src="~assets/img/order/1111.png" @touchend="aa3"> -->
         
          <!-- <map name="map">
@@ -49,6 +58,7 @@ export default {
     name:"DdOrder",
     data() {
         return {
+            isshow:false,
             hh:'订单',
             color:['#8164ff','#0eb2fe','#e886b1','#e88888','#66d6b5','#87aee8'],
             //freight:运费,totalproduce:总件数,sum:总价,person:配送人编号,state:订单状态（正在配送/已完成）
@@ -66,23 +76,36 @@ export default {
 
         }
     },
+    mounted() {
+        document.addEventListener('touchmove',this.bb1)
+    },
     methods:{
-        aa() {
-            console.log("1");
-            this.hh='按住了';
+        bb1() {
+            // this.hh=document.documentElement.scrollTop;    //这是浏览器的滚动条到顶部距离
+            // this.hh=document.body.scrollTop;    //这是移动端的滚动条到顶部距离
+            //pc端的配置
+            // if(document.documentElement.scrollTop < 100) {
+            //     this.isshow=false
+            // } else {
+            //     this.isshow=true
+            // }
+            // 移动端配置
+            if(document.body.scrollTop < 100) {
+                this.isshow=false
+            } else {
+                this.isshow=true
+            }
+             
         },
-        aa2() {
-            console.log("1");
-            this.hh='拖动了';
+        bbb() {
+            // console.log(document.documentElement.scrollTop);
+            document.body.scrollTop = document.documentElement.scrollTop = 0;
         },
-        aa3() {
-            console.log("1");
-            this.hh='松开了';
-        },
-        aa4() {
-            this.hh='按住了 +点图片了';
-            console.log("1");
+        move() {
+            console.log(document.documentElement.scrollTop);
 
+            //如果滚动条在顶部，则隐藏gotop
+            
         }
     }
 }
@@ -90,6 +113,12 @@ export default {
 
 
 <style scoped>
+.gotop {
+  height: 35px;
+  position: fixed;
+  bottom: 83px;
+  right: 25px;
+}
 .ddorder {
     overflow: noscroll;
     /* 抵掉上固定定位 */
