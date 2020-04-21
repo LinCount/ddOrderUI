@@ -1,40 +1,24 @@
 <template>
   <div>
-
     <div id="login"></div>
-    <div class="login_bg">
-      <div class="regTop">
-      <span>用户登录</span>
-      <a class="back" @click="backindex()">&lt;&nbsp;返回</a>
-    </div>
+    <div class="login_bg" >
+      <nav-back  :theme="theme"/>
       <div id="logo">
         <img src="~assets/img/login/logo.png" alt="" />
       </div>
       <form action="">
         <div class="userName">
-          <lable>账号：</lable>
-          <input
-            type="text"
-            name="name"
-            placeholder="请输入用户名"
-            pattern="[0-9A-Za-z]{6,16}"
-            required
-          />
+          <span>账号：</span>
+          <input type="text" name="name" placeholder="请输入用户名" pattern="[0-9A-Za-z]{6,16}" required />
         </div>
         <div class="passWord">
-          <lable>密码：</lable>
-          <input
-            type="password"
-            name="password"
-            placeholder="请输入密码"
-            pattern="[0-9A-Za-z]{6,25}"
-            required
-          />
+          <span>密码：</span>
+          <input type="password" name="password" placeholder="请输入密码" pattern="[0-9A-Za-z]{6,25}" required />
         </div>
         <div class="choose_box">
           <div>
             <input type="checkbox" checked="checked" name="checkbox" />
-            <lable>记住密码</lable>
+            <span>记住密码</span>
           </div>
           <a @click="forgetpassword()">忘记密码</a>
         </div>
@@ -62,15 +46,22 @@
   </div>
 </template>
 <script>
+import NavBack from "components/content/navback/NavBack";
+
 export default {
   name: "Login",
-  methods: {
+  components: {
+    NavBack
+  },
+   data(){
+     return{
+     theme:{'title':'欢迎登陆','backrouter':'/indexlogin'}}
+   },
+  methods:{
     tabback() {
       this.$EventBus.$emit("tabback");
       this.$router.replace("/home");
-    },
-    backindex(){
-      this.$router.replace("/indexlogin");
+      
 
     },
     forgetpassword() {
@@ -79,5 +70,4 @@ export default {
   }
 };
 </script>
-<style src="assets/css/lore.css" scoped>
-</style>
+<style src="assets/css/lore.css" scoped></style>

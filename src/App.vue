@@ -34,8 +34,6 @@ export default {
     this.$EventBus.$on(
       "tabback",
       function() {
-        console.log('dd');
-        
         this.set = true;
       }.bind(this)
     );

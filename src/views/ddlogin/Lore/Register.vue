@@ -18,7 +18,7 @@
                         <b><img src="~assets/img/login/zc-1.jpg" alt=""/></b>
                         <b><img src="~assets/img/login/zc-2.jpg" alt=""/></b>
                         <b><img src="~assets/img/login/zc-3.jpg" alt=""/></b>
-                        <b><img src="i~assets/img/login/zc-3.jpg" alt=""/></b>
+                        <b><img src="~assets/img/login/zc-3.jpg" alt=""/></b>
                     </div>
                     <a class="code" href="" required>获取验证码</a>
                 </div>
@@ -35,7 +35,7 @@ export default {
     name:"Register",
     methods:{
         backindex(){
-            this.$router.replace('indexlogin')
+            this.$router.replace('/indexlogin')
         }
     }
 }
