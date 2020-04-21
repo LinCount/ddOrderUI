@@ -68,7 +68,7 @@
           <span>></span>
         </div>
       </a>
-      <div class="unlogin">
+      <div class="unlogin" @click="backindex()">
         <p>退出登录</p>
       </div>
     </div>
@@ -86,6 +86,9 @@ export default {
     navback(){
       this.$router.replace('/profile')
       this.$EventBus.$emit('navback')
+    },
+    backindex(){
+      this.$router.replace('/indexlogin')
     }
   }
   

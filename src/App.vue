@@ -12,7 +12,7 @@ export default {
   name: "app",
   data() {
     return {
-      set: true
+      set: false
     };
   },
   components: {
@@ -28,6 +28,14 @@ export default {
     this.$EventBus.$on(
       "navback",
       function() {
+        this.set = true;
+      }.bind(this)
+    );
+    this.$EventBus.$on(
+      "tabback",
+      function() {
+        console.log('dd');
+        
         this.set = true;
       }.bind(this)
     );
