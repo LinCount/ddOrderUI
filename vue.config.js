@@ -14,7 +14,8 @@ module.exports = {
         externals: {
             'vue': 'Vue',
             'element-ui':'ELEMENT',
-            'jquery':'jQuery'
+            // 'jquery':'jQuery'
+            'jquery' : '$',
         }
     }
 }
