@@ -1,6 +1,7 @@
 <template>
   <div>
-    <nav-bar><div slot="left" class="navhead" @click="navback()"><span class="lt">&lt;</span>设置</div></nav-bar>
+    <nav-bar><div slot="left" class="navhead" @click="navback()"><img src="~assets/img/home/fanhui.png" />
+    </div><div slot="center" class="span">设置</div></nav-bar>
     <div class="aui-user-list">
       <a
         class="aui-flex "
@@ -95,6 +96,7 @@ export default {
 };
 </script>
 <style scoped>
+
 a {
   line-height: 20px;
 }
@@ -106,14 +108,18 @@ span {
 p {
   font-size: 16px;
 }
-.lt{
-  color: rgba(100, 100, 100);
-  font-size: 17px;
-  padding-right: 5px;
+img {
+  height: 24px;
+  margin-right:12px ;
+  margin-top: 8.5px;
+}
+.span{
+  font-size: 18px;
+  margin-left: -15px;
 }
 .navhead {
   font-size: 17px;
-  margin-left: 10px;
+  margin-left: 5px;
   font-weight: 400;
   line-height: 44px;
   text-align: center;

@@ -1,9 +1,6 @@
 <template>
         <div class="register">
-        <div class="regTop">
-            <span>忘记密码</span>
-            <a class="back" @click="indeback()">&lt;&nbsp;返回</a>
-        </div>
+        <nav-back  :theme="theme" style="background: #21a9f5;color:#ffffff" />
         <div class="content">
             <form action="">
                 <div class="message">
@@ -12,21 +9,29 @@
                     <input type="password" placeholder="请输入新密码" pattern="[0-9A-Za-z]{6,25}" required/>
                     <input type="password" placeholder="请再次输入密码" pattern="[0-9A-Za-z]{6,25}" required/>
                     <div class="icons">
-                        <b><img src="~assets/img/login/zc-1.jpg" alt=""/></b>
-                        <b><img src="~assets/img/login/zc-2.jpg" alt=""/></b>
-                        <b><img src="~assets/img/login/zc-3.jpg" alt=""/></b>
-                        <b><img src="~assets/img/login/zc-3.jpg" alt=""/></b>
+                        <b ><img src="~assets/img/login/zc-1.jpg" alt=""/></b>
+                        <b style="margin-top:18px"><img src="~assets/img/login/zc-2.jpg" alt=""/></b>
+                        <b style="margin-top:28px"><img src="~assets/img/login/zc-3.jpg" alt=""/></b>
+                        <b style="margin-top:38px"><img src="~assets/img/login/zc-3.jpg" alt=""/></b>
                     </div>
                     <a class="code" href="">获取验证码</a>
                 </div>
-                <button class="submit" type="submit">立即注册</button>
+                <button class="submit" type="submit">确认提交</button>
             </form>
         </div>
     </div>
 </template>
 <script>
+import NavBack from "components/content/navback/NavBack";
 export default {
     name:"ForgetPass",
+      components: {
+    NavBack
+  },
+     data(){
+     return{
+     theme:{'title':'忘记密码','backrouter':'/login'}}
+   },
     methods:{
         indeback(){
             this.$router.replace('/login')
@@ -35,6 +40,9 @@ export default {
 }
 </script>
 <style src="assets/css/lore.css" scoped>
+    .back  /deep/ .login{
+        color:#ffffff;
+    }
        .message{
             background: none;
             padding-top: 10%;

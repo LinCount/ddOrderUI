@@ -1,9 +1,6 @@
 <template>
     <div class="register">
-        <div class="regTop">
-            <span>用户注册</span>
-            <a class="back"  @click="backindex()">&lt;&nbsp;返回</a>
-        </div>
+    <nav-back  :theme="theme" style="background: #21a9f5;color:#ffffff" class="back"/>
         <div class="content">
             <div class="point">
                 <span>注册成功后，手机号也可为登录账号。</span>
@@ -16,9 +13,9 @@
                     <input type="text" placeholder="输入验证码" pattern="[0-9]{6}" required/>
                     <div class="icons">
                         <b><img src="~assets/img/login/zc-1.jpg" alt=""/></b>
-                        <b><img src="~assets/img/login/zc-2.jpg" alt=""/></b>
-                        <b><img src="~assets/img/login/zc-3.jpg" alt=""/></b>
-                        <b><img src="~assets/img/login/zc-3.jpg" alt=""/></b>
+                        <b style="margin-top:18px"><img src="~assets/img/login/zc-2.jpg" alt=""/></b>
+                        <b style="margin-top:28px"><img src="~assets/img/login/zc-3.jpg" alt=""/></b>
+                        <b style="margin-top:38px"><img src="~assets/img/login/zc-3.jpg" alt=""/></b>
                     </div>
                     <a class="code" href="" required>获取验证码</a>
                 </div>
@@ -31,8 +28,16 @@
     </div>
 </template>
 <script>
+import NavBack from "components/content/navback/NavBack";
 export default {
     name:"Register",
+      components: {
+    NavBack
+  },
+     data(){
+     return{
+     theme:{'title':'欢迎注册','backrouter':'/indexlogin'}}
+   },
     methods:{
         backindex(){
             this.$router.replace('/indexlogin')
@@ -41,4 +46,7 @@ export default {
 }
 </script>
 <style src="assets/css/lore.css" scoped>
+    .back  >>> .login{
+        font-family: 华文楷体;
+    }
 </style>

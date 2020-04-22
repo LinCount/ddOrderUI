@@ -1,8 +1,8 @@
 <template>
   <div>
-    <div id="login"></div>
+    
     <div class="login_bg" >
-      <nav-back  :theme="theme"/>
+      <nav-back  :theme="theme" style="color: black;"/>
       <div id="logo">
         <img src="~assets/img/login/logo.png" alt="" />
       </div>
@@ -55,7 +55,7 @@ export default {
   },
    data(){
      return{
-     theme:{'title':'欢迎登陆','backrouter':'/indexlogin'}}
+     theme:{'title':'欢迎登录','backrouter':'/indexlogin'}}
    },
   methods:{
     tabback() {
@@ -70,4 +70,5 @@ export default {
   }
 };
 </script>
-<style src="assets/css/lore.css" scoped></style>
+<style src="assets/css/lore.css" scoped>
+</style>
