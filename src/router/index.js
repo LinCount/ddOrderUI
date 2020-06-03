@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import ddarea from '../views/ddhome/ddarea'
+import shop from '../views/ddhome/shop'
 
 const Home = () => import('../views/ddhome/DdHome')
 const Order = () => import('../views/ddorder/DdOrder')
@@ -61,6 +62,10 @@ const routes = [
   {
     path: '/profile/set',
     component:SetProfile
+  },
+  {
+    path: '/shop',
+    component:shop
   }
 
 ]

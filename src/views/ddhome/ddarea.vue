@@ -1,99 +1,108 @@
 <template>
-    <div class="ddarea" @click="close">
-        <div class="top">
-            <div style="display:flex;align-items:center">
-                <img src="~assets/img/home/fanhui.png" @click="$router.go(-1)" style="height:26px;margin-left:10px;">
-                <span style="line-height:44px;font-size:16px;font-weight:400;color:black">{{thearea}}</span>
-            </div>
-        </div>
+    <div class="ddarea">
+        <el-container style="height:600px">
 
-        
-        
-        <div class="title">
-            <span class="title1" @click="changeisall" id="choosefont1">全部 ▼</span>
-            <span class="title1" @click="changeiskind" id="choosefont2">种类 ▼</span>
-            <span class="title1" @click="changeisplace" id="choosefont3">楼层 ▼</span>
-        </div>
+            <el-header height="44px" style="padding:0px">
+                    <span style="font-size:18px;line-height:44px;margin-left:10px">
+                        <i class="el-icon-arrow-left" @click="$router.go(-1)" style="font-size:18px;"></i> 
+                        {{thearea}}
+                    </span>
+            </el-header>
+                
+            <el-main style="padding:8px">
+                <div class="ads">
+                    <el-carousel trigger="click" height="80px" width="100vw" :interval='9000'>
+                        <el-carousel-item v-for="(item,i) in item" :key="i">
+                            <img :src="item">
+                        </el-carousel-item>
+                    </el-carousel>
+                </div>
 
-        <!-- 第一个筛选 -->
-        <div class="choose" v-show="isall" id="choose1">
-            <div class="all" style="background-color: white;width:50px;position:relation;flex:1;text-align:center">
-                <div  style="width:50%;margin:auto;box-shadow: 0px  0px 1px 1px rgba(100,100,100,.2);border-radius: 5px;">
-                    <p v-for="item in all" :key="item" style="margin:0px 10px;line-height:30px">
-                        {{item}}
-                    </p>
+                <div class="choose">
+                    <el-col :span="7" style="text-align:center">
+                        <el-dropdown trigger="click">
+                            <span class="el-dropdown-link" style="font-size:17px;line-height:35px">
+                                全部 <i class="el-icon-arrow-down el-icon--right" style="font-size:17px;line-height:35px"></i>
+                            </span>
+                            <el-dropdown-menu slot="dropdown">
+                                <el-dropdown-item icon="el-icon-plus">全部</el-dropdown-item>
+                                <el-dropdown-item icon="el-icon-circle-plus">秒杀</el-dropdown-item>
+                                <el-dropdown-item icon="el-icon-circle-plus-outline">活动</el-dropdown-item>
+                            </el-dropdown-menu>
+                        </el-dropdown>
+                    </el-col>
+                    
+                    <el-col :span="7" style="text-align:center">
+                        <el-dropdown trigger="click">
+                                <span class="el-dropdown-link" style="font-size:17px;line-height:35px">
+                                    种类 <i class="el-icon-arrow-down el-icon--right" style="font-size:17px;line-height:35px;line-height:35px"></i>
+                                </span>
+                                <el-dropdown-menu slot="dropdown">
+                                    <el-dropdown-item icon="el-icon-plus">汤/面</el-dropdown-item>
+                                    <el-dropdown-item icon="el-icon-circle-plus">小炒</el-dropdown-item>
+                                    <el-dropdown-item icon="el-icon-circle-plus-outline">减脂</el-dropdown-item>
+                                </el-dropdown-menu>
+                        </el-dropdown>
+                    </el-col>
+
+                    <el-col :span="7" style="text-align:center">
+                        <el-dropdown trigger="click">
+                                <span class="el-dropdown-link" style="font-size:17px;line-height:35px">
+                                    楼层 <i class="el-icon-arrow-down el-icon--right" style="font-size:17px;line-height:35px"></i>
+                                </span>
+                                <el-dropdown-menu slot="dropdown">
+                                    <el-dropdown-item icon="el-icon-plus">一楼</el-dropdown-item>
+                                    <el-dropdown-item icon="el-icon-circle-plus">二楼</el-dropdown-item>
+                                    <el-dropdown-item icon="el-icon-circle-plus-outline">三楼</el-dropdown-item>
+                                </el-dropdown-menu>
+                        </el-dropdown>
+                    </el-col>
+
+                    <el-col :span="3" style="text-align:center">
+                        <i class="el-icon-picture-outline" style="font-size:20px;line-height:35px"></i>
+                    </el-col>
+                </div>
+
+                <div class="product">
+                    <div v-for="item in data" :key="item.id" style="overflow:hidden" @click="$router.push('/shop')">
+                        <el-container style="height: 120px; border: 1px solid #eee">
+                            <el-aside width="120px">
+                                <img src="../../../src/assets/img/home/user.png" style="height:110px;width:110px;margin-top:5px">
+                            </el-aside>
+                            <el-container>
+                                
+                                <el-header style="text-align:center;height:35px">
+                                    <span style="line-height:35px;overflow:hidden">这是一家比较美味的杨国富</span>
+                                </el-header>
+                                <el-main style="padding:5px 12px;height:85px">
+                                    <el-row :span="8">
+                                        <p >
+                                            <span style="margin-right:1rem;font-size:14px">💗4.2</span>
+                                            <span style="margin-right:1rem;font-size:14px">月售648</span>
+                                            <span style="margin-right:1rem;font-size:14px">起送￥13</span>
+                                        </p>
+                                    </el-row>
+                                    <el-row :span="8">
+                                        <P style="margin-top:3px">
+                                            <span v-for="item in 2" :key="item" class="label" >汤/面</span> 
+                                        </P>
+                                    </el-row>
+                                    <el-row :span="8">
+                                        <P style="margin-top:3px">
+                                            <span v-for="item in 3" :key="item" class="activities" >满200减15</span> 
+                                        </P>
+                                    </el-row>
+                                    
+                                    
+                                </el-main>
+                            </el-container>
+                        </el-container>
+                        
+                    </div>
                 </div>
                 
-            </div>
-            <div class="all" style="background-color: white;width:50px;position:relation;flex:1;text-align:center">
-                <div>
-                    <!-- <p v-for="item in all" :key="item" style="">
-                        {{item}}
-                    </p> -->
-                </div>
-            </div>
-            <div class="all" style="background-color: white;width:50px;position:relation;flex:1;text-align:center">
-                <div>
-                    <!-- <p v-for="item in all" :key="item">
-                        {{item}}
-                    </p> -->
-                </div>
-            </div>
-        </div>
-
-        <!-- 第二个筛选 -->
-        <div class="choose" v-show="iskind"  id="choose2">
-            <div class="all" style="background-color: white;width:50px;position:relation;flex:1;text-align:center">
-                <div  style="background-color: white;">
-                    <!-- <p v-for="item in all" :key="item">
-                        {{item}}
-                    </p> -->
-                </div>
-                
-            </div>
-            <div class="all" style="background-color: white;width:50px;position:relation;flex:1;text-align:center">
-                <div  style="width:50%;margin:auto;box-shadow: 0px  0px 1px 1px rgba(100,100,100,.2);border-radius: 5px;">
-                    <p v-for="item in kind" :key="item" style="margin:0px 10px;line-height:30px">
-                        {{item}}
-                    </p>
-                </div>
-            </div>
-            <div class="all" style="background-color: white;width:50px;position:relation;flex:1;text-align:center">
-                <div>
-                    <!-- <p v-for="item in all" :key="item">
-                        {{item}}
-                    </p> -->
-                </div>
-            </div>
-        </div>
-
-        <!-- 第三个筛选 -->
-        <div class="choose" v-show="isplace"  id="choose3">
-            <div class="all" style="background-color: white;width:50px;position:relation;flex:1;text-align:center">
-                <div  style="background-color: white;">
-                    <!-- <p v-for="item in all" :key="item">
-                        {{item}}
-                    </p> -->
-                </div>
-                
-            </div>
-            <div class="all" style="background-color: white;width:50px;position:relation;flex:1;text-align:center">
-                <div>
-                    <!-- <p v-for="item in all" :key="item" style="">
-                        {{item}}
-                    </p> -->
-                </div>
-            </div>
-            <div class="all" style="background-color: white;width:50px;position:relation;flex:1;text-align:center">
-                <div  style="width:50%;margin:auto;box-shadow: 0px  0px 1px 1px rgba(100,100,100,.2);border-radius: 5px;">
-                    <p v-for="item in place" :key="item" style="margin:0px 10px;line-height:30px">
-                        {{item}}
-                    </p>
-                </div>
-            </div>
-        </div>
-
-
+            </el-main>
+        </el-container>
     </div>
 </template>
 
@@ -104,106 +113,79 @@ export default {
     name:'ddarea',
     data() {
         return {
-            activeName: 'second',
+            item:[
+                require('../../../src/assets/img/home/fanhui.png'),
+                require('../../../src/assets/img/home/top.png'),
+               require(' ../../../src/assets/img/home/user.png'),
+            ],
+            data:[1,1,1,1,1,1],
             thearea:'新饭',
-            isall:false,
-            all:['全部','特价','活动'],
-            iskind:false,
-            kind:['汤/面','小炒'],
-            isplace:false,
-            place:['一楼','二楼','三楼']
-        };
-        },
-        created() {
-        //    console.log(this.$route.query.thearea);
-           this.thearea=this.$route.query.thearea;
-        },
-        mounted() {
-
-        },
-        methods: {
-        changeisall() {
-            this.isall=!this.isall;
-            this.iskind=false;
-            this.isplace=false;
-        },
-        changeiskind() {
-            this.iskind=!this.iskind;
-            this.isall=false;
-            this.isplace=false;
-        },
-        changeisplace() {
-            this.isplace=!this.isplace;
-            this.isall=false;
-            this.iskind=false;
-        },
-        close(e) {
-            let cl1=document.getElementById("choose1");
-            let cl2=document.getElementById("choose2");
-            let cl3=document.getElementById("choose3");
-            let clfont1=document.getElementById("choosefont1");
-            let clfont2=document.getElementById("choosefont2");
-            let clfont3=document.getElementById("choosefont3");
-            //如果点的是开关，继续判断
-            if(clfont1.contains(e.target) || clfont2.contains(e.target) || clfont3.contains(e.target)) {                     
-
-                 //判断开
-            console.log("1");
-
-                return
-
-            } 
-            //如果点的是选项，结束该函数
-            if(cl1.contains(e.target) || cl2.contains(e.target) || cl3.contains(e.target)) {
-                console.log("2");
-                return
-            }
-            //如果点的空白区域，关闭选项
-            //点的空白区域，那么就是！false 与 ！false
-            //虽然没用到cl3 clfont2等等，但是一样能正确运行，因为在第一个if时候已经运行并且return了
-            if(!clfont1.contains(e.target) && !cl1.contains(e.target)) {
-                console.log("3");
-
-                this.isplace=false;
-                this.isall=false;
-                this.iskind=false;
-            }
-                
-
-
-
         }
+    },
+    created() {
+           this.thearea=this.$route.query.thearea;
+    },
+    methods:{
         
     }
 }
 </script>
 
 <style scoped>
+.header {
+    background-color: antiquewhite;
+    height:44px;
+}
+/* 下拉菜单  */
+  .el-dropdown-link {
+    cursor: pointer;
+  }
+  .el-icon-arrow-down {
+    font-size: 12px;
+  }
+/* 轮播图 */
+.el-carousel__item h3 {
+    color: #475669;
+    font-size: 14px;
+    opacity: 0.75;
+    line-height: 150px;
+    margin: 0;
+  }
 
-.top {
-    width:100%;
-    /* background-color: #f3f3f3; */
-    height: 44px;
-    position: fixed;
-    top: 0px;
-    justify-content: center;
-    
-}
-.title {
-    margin-top:44px;
-    display: flex;
-    justify-content: center;
-    font-size: 16px;
-    border-bottom: 2px solid  #f3f3f3;;
-}
-.title1 {
-    flex:1;
-    text-align:center;
-    color: black;
-    line-height: 35px;
-}
+  .el-carousel__item:nth-child(2n) {
+     background-color: #99a9bf;
+  }
+  
+  .el-carousel__item:nth-child(2n+1) {
+     background-color: #d3dce6;
+  }
 .choose {
-    display: flex;
-    justify-content: center;
+    margin: 5px 0px;
+    height:35px
 }
+.ads {
+    height:70px;
+    overflow: hidden;
+}
+.label {
+    /* float:right; */
+    font-size:14px;
+    border: 1px solid #ff6858;
+    color:#ff6858;
+    border-radius:3px;
+    margin:2px 3px;
+    width: 2.5rem;
+    text-align: center;
+}
+.activities {
+    /* float:right; */
+    font-size:13px;
+    border: 1px solid #fcab03;
+    color:#fcab03;
+    border-radius:3px;
+    margin:2px 3px;
+    width: 2.5rem;
+    text-align: center;
+}
+
 </style>
