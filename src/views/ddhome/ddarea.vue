@@ -64,7 +64,7 @@
                 </div>
 
                 <div class="product">
-                    <div v-for="item in data" :key="item.id" style="overflow:hidden" @click="$router.push('/shop')">
+                    <div v-for="item in data" :key="item.id" style="overflow:hidden" @click="$router.push(`/shop/${item.id}`,)">
                         <el-container style="height: 120px; border: 1px solid #eee">
                             <el-aside width="120px">
                                 <img src="../../../src/assets/img/home/user.png" style="height:110px;width:110px;margin-top:5px">
@@ -72,24 +72,24 @@
                             <el-container>
                                 
                                 <el-header style="text-align:center;height:35px">
-                                    <span style="line-height:35px;overflow:hidden">这是一家比较美味的杨国富</span>
+                                    <span style="line-height:35px;overflow:hidden">{{item.shopname}}</span>
                                 </el-header>
                                 <el-main style="padding:5px 12px;height:85px">
                                     <el-row :span="8">
                                         <p >
-                                            <span style="margin-right:1rem;font-size:14px">💗4.2</span>
-                                            <span style="margin-right:1rem;font-size:14px">月售648</span>
-                                            <span style="margin-right:1rem;font-size:14px">起送￥13</span>
+                                            <span class="info">💗{{item.info[0]}}</span>
+                                            <span class="info">月售{{item.info[1]}}</span>
+                                            <span class="info">起送￥{{item.info[2]}}</span>
                                         </p>
                                     </el-row>
                                     <el-row :span="8">
                                         <P style="margin-top:3px">
-                                            <span v-for="item in 2" :key="item" class="label" >汤/面</span> 
+                                            <span v-for="(items,i) in item.label" :key="i" class="label" >{{items}}</span> 
                                         </P>
                                     </el-row>
                                     <el-row :span="8">
                                         <P style="margin-top:3px">
-                                            <span v-for="item in 3" :key="item" class="activities" >满200减15</span> 
+                                            <span v-for="(items,i) in item.activities" :key="i" class="activities" >{{items}}</span> 
                                         </P>
                                     </el-row>
                                     
@@ -118,7 +118,15 @@ export default {
                 require('../../../src/assets/img/home/top.png'),
                require(' ../../../src/assets/img/home/user.png'),
             ],
-            data:[1,1,1,1,1,1],
+            data:[
+                {id:1134,img:'../../../src/assets/img/home/user.png',shopname:'杨国富',info:[4.2,648,13],label:['汤/面'],activities:['满200减55','满100减22','满50减10']},
+                {id:1135,img:'../../../src/assets/img/home/user.png',shopname:'食为鲜',info:[4.2,648,13],label:['汤/面'],activities:['满200减55','满100减22','满50减10']},
+                {id:1136,img:'../../../src/assets/img/home/user.png',shopname:'朵儿料理',info:[4.2,648,13],label:['汤/面'],activities:['满200减55','满100减22','满50减10']},
+                {id:1137,img:'../../../src/assets/img/home/user.png',shopname:'大东烧烤',info:[4.2,648,13],label:['汤/面'],activities:['满200减55','满100减22','满50减10']},
+                {id:1138,img:'../../../src/assets/img/home/user.png',shopname:'这是一家比较美味的杨国富',info:[4.2,648,13],label:['汤/面'],activities:['满200减55','满100减22','满50减10']},
+                {id:1139,img:'../../../src/assets/img/home/user.png',shopname:'这是一家比较美味的杨国富',info:[4.2,648,13],label:['汤/面'],activities:['满200减55','满100减22','满50减10']},
+                {id:1133,img:'../../../src/assets/img/home/user.png',shopname:'这是一家比较美味的杨国富',info:[4.2,648,13],label:['汤/面'],activities:['满200减55','满100减22','满50减10']}
+            ],
             thearea:'新饭',
         }
     },
@@ -186,6 +194,10 @@ export default {
     margin:2px 3px;
     width: 2.5rem;
     text-align: center;
+}
+.info {
+    margin-right:1rem;
+    font-size:14px
 }
 
 </style>
