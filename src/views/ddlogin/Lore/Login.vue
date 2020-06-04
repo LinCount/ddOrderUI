@@ -59,8 +59,10 @@ export default {
    },
   methods:{
     tabback() {
-      this.$EventBus.$emit("tabback");
+      
       this.$router.replace("/home");
+      this.$store.commit('loginState')
+      this.$store.commit('showMainBar')
       
 
     },

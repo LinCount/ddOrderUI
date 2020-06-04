@@ -1,7 +1,7 @@
 <template>
   <nav-bar
     ><div slot="left" class="navback" >
-      <img src="~assets/img/home/fanhui.png" @click="backindex()" />
+      <img src="~assets/img/home/fanhui.png" @click="backindex(theme.backrouter)" />
     </div>
     <div slot="center"  class="login" >{{theme.title}}</div></nav-bar>
 </template>
@@ -23,8 +23,12 @@ export default {
     NavBar
   },
 methods:{
-      backindex(){
-      this.$router.replace(this.theme.backrouter);
+      
+      backindex(backrouter){
+      this.$router.replace(backrouter); 
+      if (backrouter === '/share')  {
+        this.$store.commit('showMainBar')
+      } 
     },
 }
 

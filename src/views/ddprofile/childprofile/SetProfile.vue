@@ -69,7 +69,7 @@
           <span>></span>
         </div>
       </a>
-      <div class="unlogin" @click="backindex()">
+      <div class="unlogin" @click="backindex()" v-if="!this.$store.state.nologin">
         <p>退出登录</p>
       </div>
     </div>
@@ -86,10 +86,14 @@ export default {
   methods:{
     navback(){
       this.$router.replace('/profile')
-      this.$EventBus.$emit('navback')
+      this.$store.commit('showMainBar')
     },
     backindex(){
-      this.$router.replace('/indexlogin')
+      this.$router.replace('/profile')
+      this.$store.commit('showMainBar')
+      this.$store.commit('noLoginState')
+      
+
     }
   }
   
@@ -111,7 +115,7 @@ p {
 img {
   height: 24px;
   margin-right:12px ;
-  margin-top: 8.5px;
+  margin-top: 10px;
 }
 .span{
   font-size: 18px;

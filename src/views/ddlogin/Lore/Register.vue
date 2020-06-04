@@ -17,7 +17,7 @@
                         <b style="margin-top:28px"><img src="~assets/img/login/zc-3.jpg" alt=""/></b>
                         <b style="margin-top:38px"><img src="~assets/img/login/zc-3.jpg" alt=""/></b>
                     </div>
-                    <a class="code" href="" required>获取验证码</a>
+                    <a class="code-one" href="" required>获取验证码</a>
                 </div>
                 <div class="agree">
                     <input type="checkbox"/><span>&nbsp;同意&nbsp;</span><a href="">《注册协议》</a>

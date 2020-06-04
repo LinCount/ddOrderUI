@@ -8,13 +8,14 @@
                     <input type="text" placeholder="输入验证码" pattern="[0-9]{6}" required/>
                     <input type="password" placeholder="请输入新密码" pattern="[0-9A-Za-z]{6,25}" required/>
                     <input type="password" placeholder="请再次输入密码" pattern="[0-9A-Za-z]{6,25}" required/>
+                    <a class="code" href="">获取验证码</a>
                     <div class="icons">
                         <b ><img src="~assets/img/login/zc-1.jpg" alt=""/></b>
                         <b style="margin-top:18px"><img src="~assets/img/login/zc-2.jpg" alt=""/></b>
                         <b style="margin-top:28px"><img src="~assets/img/login/zc-3.jpg" alt=""/></b>
                         <b style="margin-top:38px"><img src="~assets/img/login/zc-3.jpg" alt=""/></b>
                     </div>
-                    <a class="code" href="">获取验证码</a>
+                    
                 </div>
                 <button class="submit" type="submit">确认提交</button>
             </form>
