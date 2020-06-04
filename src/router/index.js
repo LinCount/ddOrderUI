@@ -3,10 +3,17 @@ import VueRouter from 'vue-router'
 import ddarea from '../views/ddhome/ddarea'
 
 const Home = () => import('../views/ddhome/DdHome')
+
 const Order = () => import('../views/ddorder/DdOrder')
+
 const Share = () => import('../views/ddshare/DdShare')
+const Apply = () => import('../views/ddshare/childshare/Apply')
+const Nutrition = () => import('../views/ddshare/childshare/Nutrition')
+const Random = () => import('../views/ddshare/childshare/Random')
+
 const DdProfile = () => import('../views/ddprofile/DdProfile')
 const SetProfile = () => import('../views/ddprofile/childprofile/SetProfile')
+
 const DdLogin = () =>import('../views/ddlogin/DdLogin')
 const Login = () =>import('../views/ddlogin/Lore/Login')
 const Register = () =>import('../views/ddlogin/Lore/Register')
@@ -19,7 +26,7 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '',
-    redirect: '/indexlogin'
+    redirect: '/home'
   },
   {
     path:'/indexlogin',
@@ -49,6 +56,19 @@ const routes = [
   {
     path: '/share',
     component: Share
+  },
+  {
+    path: '/share/apply',
+    component:Apply
+  },
+  {
+    path: '/share/nutrition',
+    component:Nutrition
+  },
+  
+  {
+    path: '/share/random',
+    component:Random
   },
   {
     path: '/profile',

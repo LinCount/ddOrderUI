@@ -1,9 +1,16 @@
 <template>
   <div>
     <div class="aui-user-list">
-      <a href="javascript:;" class="aui-flex " style="box-shadow: 0 10px 0 rgba(100,100,100,.1); line-height: 30px;">
+      <a
+        class="aui-flex "
+        style="box-shadow: 0 10px 0 rgba(100,100,100,.1); line-height: 30px;"
+      >
         <div class="aui-cou-img">
-          <img src="~assets/img/profile/nav-001.png" alt=""  style="margin-top:10px"/>
+          <img
+            src="~assets/img/profile/nav-001.png"
+            alt=""
+            style="margin-top:10px"
+          />
         </div>
         <div class="aui-flex-box">
           <p>美食论坛</p>
@@ -12,18 +19,26 @@
           <span>>></span>
         </div>
       </a>
-      <a href="javascript:;" class="aui-flex " style="box-shadow: 0 10px 0 rgba(100,100,100,.1);margin-top:10px;">
+      <a
+        @click="goApply"
+        class="aui-flex "
+        style="box-shadow: 0 10px 0 rgba(100,100,100,.1);margin-top:10px;"
+      >
         <div class="aui-cou-img">
           <img src="~assets/img/profile/nav-002.png" alt="" />
         </div>
         <div class="aui-flex-box">
           <p>申请成为顺丰配送员</p>
         </div>
-        <div >
+        <div>
           <span>>></span>
         </div>
       </a>
-      <a href="javascript:;" class="aui-flex " style="box-shadow: 0 2px 2px rgba(100,100,100,.1);margin-top:10px;">
+      <a
+        @click="goNutrition"
+        class="aui-flex "
+        style="box-shadow: 0 2px 2px rgba(100,100,100,.1);margin-top:10px;"
+      >
         <div class="aui-cou-img">
           <img src="~assets/img/profile/nav-003.png" alt="" />
         </div>
@@ -34,14 +49,18 @@
           <span>>></span>
         </div>
       </a>
-      <a href="javascript:;" class="aui-flex " style="box-shadow: 0 2px 2px rgba(100,100,100,.1);margin-top:2px;">
+      <a
+       @click="goRandom"
+        class="aui-flex "
+        style="box-shadow: 0 2px 2px rgba(100,100,100,.1);margin-top:2px;"
+      >
         <div class="aui-cou-img">
-          <img src="~assets/img/profile/nav-004.png" alt="" />
+          <img src="~assets/img/profile/nav-003.png" alt="" />
         </div>
         <div class="aui-flex-box">
           <p>随机点餐</p>
         </div>
-        <div >
+        <div>
           <span>>></span>
         </div>
       </a>
@@ -50,9 +69,22 @@
 </template>
 <script>
 export default {
-  name: "ShareBody"
+  name: "ShareBody",
+  methods: {
+    goApply() {
+      this.$router.replace("/share/apply");
+      this.$store.commit("hiddenMainBar");
+    },
+    goNutrition() {
+      this.$router.replace("/share/nutrition");
+      this.$store.commit("hiddenMainBar");
+    },
+    goRandom() {
+      this.$router.replace("/share/random");
+      this.$store.commit("hiddenMainBar");
+
+    }
+  }
 };
 </script>
-<style scoped>
-
-</style>
+<style scoped></style>

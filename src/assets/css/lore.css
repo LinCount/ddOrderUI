@@ -207,7 +207,15 @@ body{
   }
   .code{
     position: absolute;
-    top: 60%;
+    top: 36%;
+    right:10%;
+    color: #21a9f5;
+    font-size: 0.875em;
+    font-family: "Microsoft YaHei";
+  }
+  .code-one{
+    position: absolute;
+    top: 84%;
     right:10%;
     color: #21a9f5;
     font-size: 0.875em;
