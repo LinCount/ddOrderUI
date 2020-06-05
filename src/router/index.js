@@ -84,7 +84,7 @@ const routes = [
     component:SetProfile
   },
   {
-    path: '/shop',
+    path: '/shop/:id',
     component:shop
   }
 
