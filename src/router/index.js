@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import ddarea from '../views/ddhome/ddarea'
+import test from '../views/ddhome/test'
 import shop from '../views/ddhome/shop'
 
 const Home = () => import('../views/ddhome/DdHome')
@@ -86,7 +87,11 @@ const routes = [
   {
     path: '/shop/:id',
     component:shop
-  }
+  },
+  {
+    path: '/test',
+    component:test
+  },
 
 ]
 const router = new VueRouter({
