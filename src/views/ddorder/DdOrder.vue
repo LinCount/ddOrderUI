@@ -19,12 +19,14 @@
                     <!-- <div class="head1"><span class="head11">{{item.addres}}</span></div> -->
                     <span class="head2">{{item.state}}</span>
                 </div>
+
                 <div class="body">
                     <div v-for="items in item.product" :key="items.name">
                         <span>{{items.name}}</span>
                         <span style="float:right">X{{items.quantity}}</span>
                     </div>
                 </div>
+
                 <div class="foot">
                     <span style="float:right">总价:{{item.sum}}</span>
                     <span style="float:right;margin-right:10px">共 {{item.totalproduce}} 件</span>
@@ -165,6 +167,7 @@ export default {
 }
 .body {
      padding:0px 16px 5px 16px;
+     font-size:14px
 }
 .foot {
     height:25px;
