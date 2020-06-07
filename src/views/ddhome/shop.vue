@@ -1,10 +1,13 @@
 <template>
   <div class="shop">
+    <el-badge :value="num" class="change1"  :hidden="num | badgenum">
+      <img src="../../../src/assets/img/home/gouwuche.png" class="change">
+    </el-badge>
 
       <!-- 最顶的 点返回的 -->
       <span style="font-size:18px;line-height:44px;margin-left:10px;position:fixed;top:0px;background-color:white;width:100vw">
         <i class="el-icon-arrow-left" @click="$router.go(-1)" style="font-size:18px;"></i> 
-        这是商家名称
+        这是商家名称{{num}}
       </span> 
 
       <!-- 浮起来的那个商家介绍 -->
@@ -71,10 +74,11 @@
                         <p style="font-size:14px;color:red">￥7</p>
                         <!-- 计数器 -->
                         <div class="jishuqi" >
-                          <i class="el-icon-remove" @click="num--"></i>
-                          <span  class="jishuqi2" >{{num | num}}</span>
-                          <i class="el-icon-circle-plus"  @click="num++" style="margin-right:10px"></i>
-                           <el-button type="primary" round size="mini" style="float:right;margin-right:8px;" >
+                          <i class="el-icon-remove" @click="remove(i)"></i>
+                          <span  class="jishuqi2" >{{arry[x][i]}}</span>
+                          <!-- <el-input style="height:27px" v-model="arry[x][i]"></el-input> -->
+                          <i class="el-icon-circle-plus"  @click="add(i)" style="margin-right:10px"></i>
+                           <el-button type="primary" round size="mini" style="float:right;margin-right:8px;" @click="addcar(i)" >
                             <i class="el-icon-circle-plus"></i>选购
                            </el-button>
                         </div>
@@ -92,23 +96,25 @@
 </template>
 
 <script>
+import store from '@/store/index'
+import {mapState} from 'vuex'
+
 export default {
     name:'shop',
     data() {
         return {
-          // 计数器
-            num:0,
+          //每个商品选购数二维数组
+          arry:[],
+          // 购物车总数
+            // num:0,放vuex去了
           // 菜品分类左边的下标
             x:0,
-            data:[
-              {class:'热销',content:[{"id":123,name:'香菇排骨',price:23,number:12,cailiao:'猪肉'},{"id":124,name:'麻辣香锅',price:23,number:12,cailiao:'鸡肉'},{"id":124,name:'麻辣香锅',price:23,number:12,cailiao:'鸡肉'},{"id":124,name:'麻辣香锅',price:23,number:12,cailiao:'鸡肉'},{"id":124,name:'麻辣香锅',price:23,number:12,cailiao:'鸡肉'},{"id":124,name:'麻辣香锅',price:23,number:12,cailiao:'鸡肉'},{"id":124,name:'麻辣香锅',price:23,number:12,cailiao:'鸡肉'},{"id":124,name:'麻辣香锅',price:23,number:12,cailiao:'鸡肉'},{"id":124,name:'麻辣香锅',price:23,number:12,cailiao:'鸡肉'},{"id":124,name:'麻辣香锅',price:23,number:12,cailiao:'鸡肉'}]},
-              {class:'热销',content:[{"id":123,name:'香菇排骨',price:23,number:12,cailiao:'猪肉'}]},
-              {class:'热销',content:[{"id":123,name:'香菇排骨',price:23,number:12,cailiao:'猪肉'}]},
-              {class:'热销',content:[{"id":123,name:'香菇排骨',price:23,number:12,cailiao:'猪肉'}]},
-              {class:'热销',content:[{"id":123,name:'香菇排骨',price:23,number:12,cailiao:'猪肉'},{"id":124,name:'麻辣香锅',price:23,number:12,cailiao:'鸡肉'}]},
-            ]
+          //菜品数据
+            data:[]
         };
    },
+   store,
+   computed:mapState(['num']),
    filters:{
      num(val) {
        if (val<1) {
@@ -118,6 +124,13 @@ export default {
          return 99
        }
        return val
+     },
+     badgenum(val) {
+       if(val==0) {
+         return true
+       } else {
+         return false
+       }
      }
    },
    methods: {
@@ -126,8 +139,46 @@ export default {
       },
       handleClose(key, keyPath) {
         console.log(key, keyPath);
+      },
+      add(i) {
+        // this.arry[this.x][i]++
+        this.$set(this.arry[this.x],i,++this.arry[this.x][i])
+        // console.log(this.arry[this.x][i])
+      },
+      remove(i) {
+        // this.arry[this.x][i]++
+        this.$set(this.arry[this.x],i,--this.arry[this.x][i])
+        // console.log(this.arry[this.x][i])
+      },
+        // 修改购物车总数
+      addcar(i) {
+        let a = this.arry[this.x][i]
+        this.$store.commit('changenum',a)
       }
-    }
+   },
+   created() {
+     let data1=[
+              {class:'热销',content:[{"id":123,name:'香菇排骨',price:23,number:12,cailiao:'猪肉'},{"id":124,name:'麻辣香锅',price:23,number:12,cailiao:'鸡肉'},{"id":124,name:'麻辣香锅',price:23,number:12,cailiao:'鸡肉'},{"id":124,name:'麻辣香锅',price:23,number:12,cailiao:'鸡肉'},{"id":124,name:'麻辣香锅',price:23,number:12,cailiao:'鸡肉'},{"id":124,name:'麻辣香锅',price:23,number:12,cailiao:'鸡肉'},{"id":124,name:'麻辣香锅',price:23,number:12,cailiao:'鸡肉'},{"id":124,name:'麻辣香锅',price:23,number:12,cailiao:'鸡肉'},{"id":124,name:'麻辣香锅',price:23,number:12,cailiao:'鸡肉'},{"id":124,name:'麻辣香锅',price:23,number:12,cailiao:'鸡肉'}]},
+              {class:'热销',content:[{"id":123,name:'香菇排骨',price:23,number:12,cailiao:'猪肉'}]},
+              {class:'热销',content:[{"id":123,name:'香菇排骨',price:23,number:12,cailiao:'猪肉'}]},
+              {class:'热销',content:[{"id":123,name:'香菇排骨',price:23,number:12,cailiao:'猪肉'}]},
+              {class:'热销',content:[{"id":123,name:'香菇排骨',price:23,number:12,cailiao:'猪肉'},{"id":124,name:'麻辣香锅',price:23,number:12,cailiao:'鸡肉'}]},
+            ]
+      this.data=data1;
+
+      let arry1= new Array()
+      for(let i=0;i<data1.length;i++) {
+         arry1[i]=new Array()
+          for( let y=0;y<data1[i].content.length;y++) {
+            //  arry1[i][y]=1;
+             this.$set(arry1[i],y,1)
+          }
+      }
+
+      this.arry=arry1;
+      // 正常
+      // console.log(this.arry)
+   }
 }
 </script>
 
@@ -177,5 +228,17 @@ export default {
   border:1px solid #999;
   padding:0 3px;
   margin:0 3px;
+}
+.change {
+  height: 45px;
+  position: fixed;
+  bottom: 80px;
+  right: 25px;
+}
+.change1 {
+  height: 45px;
+  position: fixed;
+  bottom: 75px;
+  right: 36px;
 }
 </style>

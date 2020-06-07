@@ -8,6 +8,8 @@
  const store = new Vuex.Store(
      {
          state:{
+            //购物车总量
+            num:0,
             set:true,
             nologin:true,
             profilenews:{
@@ -17,6 +19,10 @@
 
          },
          mutations:{
+             // 修改购物车总数
+            changenum(state,a) {
+                state.num+=a
+            },
             loginState(state){
                 state.nologin=false
 
