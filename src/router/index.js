@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import ddarea from '../views/ddhome/ddarea'
 import test from '../views/ddhome/test'
 import shop from '../views/ddhome/shop'
+import shopcar from '../views/ddhome/shopcar'
 
 const Home = () => import('../views/ddhome/DdHome')
 
@@ -91,6 +92,10 @@ const routes = [
   {
     path: '/test',
     component:test
+  },
+  {
+    path: '/shopcar',
+    component:shopcar
   },
 
 ]
