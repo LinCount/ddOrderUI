@@ -132,6 +132,7 @@ export default {
     },
     created() {
            this.thearea=this.$route.query.thearea;
+
     },
     methods:{
         

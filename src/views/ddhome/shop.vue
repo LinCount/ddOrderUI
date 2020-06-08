@@ -1,13 +1,20 @@
 <template>
   <div class="shop">
-    <el-badge :value="num" class="change1"  :hidden="num | badgenum">
-      <img src="../../../src/assets/img/home/gouwuche.png" class="change">
-    </el-badge>
+
+
+    <!-- 购物车图标 -->
+      <el-badge :value="num" class="change1"  :hidden="num | badgenum" >
+        <img src="../../../src/assets/img/home/gouwuche.png" class="change" @click="showcar=!showcar">
+      </el-badge>
+
+    <!-- 购物车组件 -->
+    <shopcar v-show="showcar" style="z-index:600;position:absolute;
+    width:70%;height:70vh;right:70px;bottom:80px;"></shopcar>
 
       <!-- 最顶的 点返回的 -->
-      <span style="font-size:18px;line-height:44px;margin-left:10px;position:fixed;top:0px;background-color:white;width:100vw">
+      <span class="topshopname" >
         <i class="el-icon-arrow-left" @click="$router.go(-1)" style="font-size:18px;"></i> 
-        这是商家名称{{num}}
+        这是商家名称
       </span> 
 
       <!-- 浮起来的那个商家介绍 -->
@@ -21,6 +28,7 @@
             <img src="../../../src/assets/img/home/user.png" style="height:100%">
           </el-main>
         </el-container>
+
       </div>
 
       <!-- 商家介绍的背景 -->
@@ -44,7 +52,7 @@
                         style="width:28vW">
                         <!-- 把分类下标值赋给x -->
                         <el-menu-item index="2" v-for="(item,i) in data" :key="i" @click="x=i;">
-                          <span slot="title">导航二{{x}}</span>
+                          <span slot="title">{{item.class}}</span>
                         </el-menu-item>
                       </el-menu>
                     </div>
@@ -62,23 +70,23 @@
                     <el-container >
                       <!-- 标题 -->
                       <el-header style="line-height:30px;overflow:hidden;height:30px;padding:0px 8px;">
-                        <span style="font-size:14px;">这是个不错的心机排骨</span>
+                        <span style="font-size:14px;">{{item.name}}</span>
                       </el-header>
                       <!-- 介绍 -->
                       <el-main  style="padding:8px 8px;font-size:12px"> 
-                        <p>主要原料：猪肉</p>
-                        <p>月售：27份</p>
+                        <p>主要原料：{{item.cailiao}}</p>
+                        <p>月售：{{item.number}}份</p>
                       </el-main>
                       <el-footer style="padding:0px 8px;height:20px">
                         <!-- 价格 -->
-                        <p style="font-size:14px;color:red">￥7</p>
+                        <p style="font-size:14px;color:red">￥{{item.price}}</p>
                         <!-- 计数器 -->
                         <div class="jishuqi" >
                           <i class="el-icon-remove" @click="remove(i)"></i>
                           <span  class="jishuqi2" >{{arry[x][i]}}</span>
                           <!-- <el-input style="height:27px" v-model="arry[x][i]"></el-input> -->
-                          <i class="el-icon-circle-plus"  @click="add(i)" style="margin-right:10px"></i>
-                           <el-button type="primary" round size="mini" style="float:right;margin-right:8px;" @click="addcar(i)" >
+                          <i class="el-icon-circle-plus"  @click="add(i,item)" style="margin-right:10px"></i>
+                           <el-button type="primary" round size="mini"  @click="addcar(i,item)"  style="float:right;margin-right:8px;" >
                             <i class="el-icon-circle-plus"></i>选购
                            </el-button>
                         </div>
@@ -96,6 +104,7 @@
 </template>
 
 <script>
+import shopcar from '../ddhome/shopcar.vue'
 import store from '@/store/index'
 import {mapState} from 'vuex'
 
@@ -103,6 +112,8 @@ export default {
     name:'shop',
     data() {
         return {
+          // 展示购物车
+          showcar:true,
           //每个商品选购数二维数组
           arry:[],
           // 购物车总数
@@ -110,11 +121,14 @@ export default {
           // 菜品分类左边的下标
             x:0,
           //菜品数据
-            data:[]
+            data:[],
         };
    },
    store,
    computed:mapState(['num']),
+   components:{
+      shopcar
+   },
    filters:{
      num(val) {
        if (val<1) {
@@ -150,19 +164,24 @@ export default {
         this.$set(this.arry[this.x],i,--this.arry[this.x][i])
         // console.log(this.arry[this.x][i])
       },
+        
+      addcar(i,item) {
         // 修改购物车总数
-      addcar(i) {
+        //a:该菜品件数
         let a = this.arry[this.x][i]
         this.$store.commit('changenum',a)
+        //商品信息发给购物车
+        let data={number:a,item:item}
+        this.$store.commit('addfoot',data)
       }
    },
    created() {
      let data1=[
-              {class:'热销',content:[{"id":123,name:'香菇排骨',price:23,number:12,cailiao:'猪肉'},{"id":124,name:'麻辣香锅',price:23,number:12,cailiao:'鸡肉'},{"id":124,name:'麻辣香锅',price:23,number:12,cailiao:'鸡肉'},{"id":124,name:'麻辣香锅',price:23,number:12,cailiao:'鸡肉'},{"id":124,name:'麻辣香锅',price:23,number:12,cailiao:'鸡肉'},{"id":124,name:'麻辣香锅',price:23,number:12,cailiao:'鸡肉'},{"id":124,name:'麻辣香锅',price:23,number:12,cailiao:'鸡肉'},{"id":124,name:'麻辣香锅',price:23,number:12,cailiao:'鸡肉'},{"id":124,name:'麻辣香锅',price:23,number:12,cailiao:'鸡肉'},{"id":124,name:'麻辣香锅',price:23,number:12,cailiao:'鸡肉'}]},
-              {class:'热销',content:[{"id":123,name:'香菇排骨',price:23,number:12,cailiao:'猪肉'}]},
-              {class:'热销',content:[{"id":123,name:'香菇排骨',price:23,number:12,cailiao:'猪肉'}]},
-              {class:'热销',content:[{"id":123,name:'香菇排骨',price:23,number:12,cailiao:'猪肉'}]},
-              {class:'热销',content:[{"id":123,name:'香菇排骨',price:23,number:12,cailiao:'猪肉'},{"id":124,name:'麻辣香锅',price:23,number:12,cailiao:'鸡肉'}]},
+              {class:'热销',content:[{"id":123,name:'香菇排骨',price:23,number:12,cailiao:'猪肉',img:''},{"id":124,name:'麻辣香锅',price:23,number:12,cailiao:'鸡肉',img:''},{"id":124,name:'麻辣香锅',price:23,number:12,cailiao:'鸡肉'},{"id":124,name:'麻辣香锅',price:23,number:12,cailiao:'鸡肉'},{"id":124,name:'麻辣香锅',price:23,number:12,cailiao:'鸡肉'},{"id":124,name:'麻辣香锅',price:23,number:12,cailiao:'鸡肉'},{"id":124,name:'麻辣香锅',price:23,number:12,cailiao:'鸡肉'},{"id":124,name:'麻辣香锅',price:23,number:12,cailiao:'鸡肉'},{"id":124,name:'麻辣香锅',price:23,number:12,cailiao:'鸡肉'},{"id":124,name:'麻辣香锅',price:23,number:12,cailiao:'鸡肉'}]},
+              {class:'优惠',content:[{"id":123,name:'香菇排骨',price:23,number:12,cailiao:'猪肉',img:''}]},
+              {class:'套餐',content:[{"id":123,name:'香菇排骨',price:23,number:12,cailiao:'猪肉',img:''}]},
+              {class:'小吃',content:[{"id":123,name:'香菇排骨',price:23,number:12,cailiao:'猪肉',img:''}]},
+              {class:'饮料',content:[{"id":123,name:'香菇排骨',price:23,number:12,cailiao:'猪肉',img:''},{"id":124,name:'麻辣香锅',price:23,number:12,cailiao:'鸡肉',img:''}]},
             ]
       this.data=data1;
 
@@ -206,6 +225,15 @@ export default {
     margin:2px 8px;
     width: 2.5rem;
     text-align: center;
+}
+.topshopname {
+  font-size:18px;
+  line-height:44px
+  ;margin-left:10px;
+  position:fixed;
+  top:0px;
+  background-color:white;
+  width:100vw
 }
 .shopname {
   font-size:20px;

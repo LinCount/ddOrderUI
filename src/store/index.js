@@ -8,6 +8,8 @@
  const store = new Vuex.Store(
      {
          state:{
+             //购物车数据
+             carfood:[],
             //购物车总量
             num:0,
             set:true,
@@ -36,6 +38,10 @@
             },
             showMainBar(state){
                 state.set = true
+            },
+            addfoot(state,data) {
+                state.carfood.push(data)
+                console.log(state.carfood)
             }
 
          },
