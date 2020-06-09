@@ -25,9 +25,9 @@
                                 全部 <i class="el-icon-arrow-down el-icon--right" style="font-size:17px;line-height:35px"></i>
                             </span>
                             <el-dropdown-menu slot="dropdown">
-                                <el-dropdown-item icon="el-icon-plus">全部</el-dropdown-item>
-                                <el-dropdown-item icon="el-icon-circle-plus">秒杀</el-dropdown-item>
-                                <el-dropdown-item icon="el-icon-circle-plus-outline">活动</el-dropdown-item>
+                                <el-dropdown-item >全部</el-dropdown-item>
+                                <el-dropdown-item >秒杀</el-dropdown-item>
+                                <el-dropdown-item >活动</el-dropdown-item>
                             </el-dropdown-menu>
                         </el-dropdown>
                     </el-col>
@@ -38,9 +38,12 @@
                                     种类 <i class="el-icon-arrow-down el-icon--right" style="font-size:17px;line-height:35px;line-height:35px"></i>
                                 </span>
                                 <el-dropdown-menu slot="dropdown">
-                                    <el-dropdown-item icon="el-icon-plus">汤/面</el-dropdown-item>
-                                    <el-dropdown-item icon="el-icon-circle-plus">小炒</el-dropdown-item>
-                                    <el-dropdown-item icon="el-icon-circle-plus-outline">减脂</el-dropdown-item>
+                                    <el-dropdown-item  v-for="(item,i) in foodclass" :key="i">{{item}}</el-dropdown-item>
+                                    <!-- <el-dropdown-item >早餐</el-dropdown-item>
+                                    <el-dropdown-item >烧烤</el-dropdown-item>
+                                    <el-dropdown-item >汤/面</el-dropdown-item>
+                                    <el-dropdown-item >小炒</el-dropdown-item>
+                                    <el-dropdown-item >小吃</el-dropdown-item> -->
                                 </el-dropdown-menu>
                         </el-dropdown>
                     </el-col>
@@ -51,9 +54,9 @@
                                     楼层 <i class="el-icon-arrow-down el-icon--right" style="font-size:17px;line-height:35px"></i>
                                 </span>
                                 <el-dropdown-menu slot="dropdown">
-                                    <el-dropdown-item icon="el-icon-plus">一楼</el-dropdown-item>
-                                    <el-dropdown-item icon="el-icon-circle-plus">二楼</el-dropdown-item>
-                                    <el-dropdown-item icon="el-icon-circle-plus-outline">三楼</el-dropdown-item>
+                                    <el-dropdown-item >一楼</el-dropdown-item>
+                                    <el-dropdown-item >二楼</el-dropdown-item>
+                                    <el-dropdown-item >三楼</el-dropdown-item>
                                 </el-dropdown-menu>
                         </el-dropdown>
                     </el-col>
@@ -127,11 +130,17 @@ export default {
                 {id:1139,img:'../../../src/assets/img/home/user.png',shopname:'这是一家比较美味的杨国富',info:[4.2,648,13],label:['汤/面'],activities:['满200减55','满100减22','满50减10']},
                 {id:1133,img:'../../../src/assets/img/home/user.png',shopname:'这是一家比较美味的杨国富',info:[4.2,648,13],label:['汤/面'],activities:['满200减55','满100减22','满50减10']}
             ],
+            foodclass:['快餐','早餐','烧烤','汤/面','小炒','小吃'],
             thearea:'新饭',
         }
     },
     created() {
            this.thearea=this.$route.query.thearea;
+
+           this.axios.get('http://localhost:8080/api/shop/getShop')
+            .then(res=>{
+            console.log(res)
+            })
 
     },
     methods:{

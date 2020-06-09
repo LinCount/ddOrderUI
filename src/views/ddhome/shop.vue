@@ -8,8 +8,7 @@
       </el-badge>
 
     <!-- 购物车组件 -->
-    <shopcar v-show="showcar" style="z-index:600;position:absolute;
-    width:70%;height:70vh;right:70px;bottom:80px;"></shopcar>
+    <shopcar v-show="showcar" class="shopcar" style=""></shopcar>
 
       <!-- 最顶的 点返回的 -->
       <span class="topshopname" >
@@ -42,7 +41,7 @@
 
       <el-container style="height:100vh;padding-top:164px;padding-bottom:49px">
               <!-- 左边选菜品分类的 -->
-              <el-aside width="30vw" style="">
+              <el-aside width="30vw" >
                     <div style="text-align:center;text-color:#969696;">
                       <el-menu
                         default-active="2"
@@ -113,7 +112,7 @@ export default {
     data() {
         return {
           // 展示购物车
-          showcar:true,
+          showcar:false,
           //每个商品选购数二维数组
           arry:[],
           // 购物车总数
@@ -176,6 +175,8 @@ export default {
       }
    },
    created() {
+    
+
      let data1=[
               {class:'热销',content:[{"id":123,name:'香菇排骨',price:23,number:12,cailiao:'猪肉',img:''},{"id":124,name:'麻辣香锅',price:23,number:12,cailiao:'鸡肉',img:''},{"id":124,name:'麻辣香锅',price:23,number:12,cailiao:'鸡肉'},{"id":124,name:'麻辣香锅',price:23,number:12,cailiao:'鸡肉'},{"id":124,name:'麻辣香锅',price:23,number:12,cailiao:'鸡肉'},{"id":124,name:'麻辣香锅',price:23,number:12,cailiao:'鸡肉'},{"id":124,name:'麻辣香锅',price:23,number:12,cailiao:'鸡肉'},{"id":124,name:'麻辣香锅',price:23,number:12,cailiao:'鸡肉'},{"id":124,name:'麻辣香锅',price:23,number:12,cailiao:'鸡肉'},{"id":124,name:'麻辣香锅',price:23,number:12,cailiao:'鸡肉'}]},
               {class:'优惠',content:[{"id":123,name:'香菇排骨',price:23,number:12,cailiao:'猪肉',img:''}]},
@@ -268,5 +269,13 @@ export default {
   position: fixed;
   bottom: 75px;
   right: 36px;
+}
+.shopcar {
+  z-index:600;
+  position:absolute;
+  width:70%;
+  height:70vh;
+  right:70px;
+  bottom:80px;
 }
 </style>

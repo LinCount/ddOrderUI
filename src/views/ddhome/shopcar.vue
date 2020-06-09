@@ -1,28 +1,51 @@
 <template>
   <div class="shopcar">
-    <el-card class="box-card" style="height:100%;"  >
+    <el-card class="box-card" style="height:100%;" body-style="padding:10px" shadow="never" >
+        <!-- 头部 -->
         <div slot="header" class="clearfix">
-            <span>已选商品</span>
+            <span>已选商品{{carfood[0].number}}</span>
             <el-button style="float: right; padding: 3px 0" type="text"   >
                 <i class="el-icon-delete"  style="color:#d91a04;"></i>
                 <span style="color:#d91a04;">清空</span>
             </el-button>
         </div>
-        <div v-for="o in 4" :key="o" class="text item">
-            {{'列表内容 ' + o }}
+        <!-- 主体 -->
+        <div style="">
+            <div v-for="(item,i) in carfood" :key="i"  style="height:20vw">
+                <el-container>
+                    <el-aside width="18vw">
+                        <img src="../../../src/assets/img/home/user.png" style="width:100%">
+                    </el-aside>
+                    <el-main style="padding:3px">
+                            <p style="height:10vw;margin-top:5px;">{{item.item.name}}</p>
+                            <span style="color:red">￥{{item.item.price}}</span>
+                            <span style="float:right">X{{item.number}}</span>
+                    </el-main>
+                </el-container>
+            </div>
+        </div>
+        <div class="bottom" >
+            <span style="line-height:40px;font-weight:600">总计 1800 元</span>
+            <el-button type="primary" plain style="float:right" size='small'>下单</el-button>
         </div>
     </el-card>
   </div>
 </template>
 
 <script>
+import store from '@/store/index'
+import {mapState} from 'vuex'
+
 export default {
     name:'shopcar',
     data() {
         return {
 
         }
-    }
+    },
+    store,
+    computed:mapState(['carfood']),
+
 }
 </script>
 
@@ -33,5 +56,13 @@ export default {
 }
 .el-card__header {
     padding: 10px;
+}
+.bottom {
+    height:40px;
+    background-color:white;
+    position:fixed;
+    bottom:82px;
+    border-radius:3px;
+    width:65%
 }
 </style>

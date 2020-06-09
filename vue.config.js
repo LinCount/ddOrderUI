@@ -1,5 +1,17 @@
 module.exports = {
     publicPath:'./',//打包时把路径改为././
+    devServer: {
+        proxy:{
+            "/api":{
+                target:"http://112.74.58.188:8080",
+                changeOrigin:true,
+                ws:true,
+                pathRewrite: {
+                    '^/api': ''  // rewrite path
+                }
+            }
+        }
+    },
     configureWebpack: {
         resolve: {
             alias: {
@@ -17,5 +29,6 @@ module.exports = {
             // 'jquery':'jQuery'
             'jquery' : '$',
         }
-    }
+    },
+
 }
