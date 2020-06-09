@@ -137,7 +137,7 @@ export default {
     created() {
            this.thearea=this.$route.query.thearea;
 
-           this.axios.get('http://localhost:8080/api/shop/getShop')
+           this.axios.get('api/shop/getShop')
             .then(res=>{
             console.log(res)
             })
