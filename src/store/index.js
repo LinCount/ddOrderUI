@@ -8,10 +8,14 @@
  const store = new Vuex.Store(
      {
          state:{
-             //购物车数据
+             //购物车数据 【 {number,item:[{菜名...}],
+             //             {number,item:[{菜名...}]
+             //          】
              carfood:[],
             //购物车总量
             num:0,
+            //购物车总价
+            sumprice:0,
             set:true,
             nologin:true,
             profilenews:{
@@ -39,9 +43,17 @@
             showMainBar(state){
                 state.set = true
             },
-            addfoot(state,data) {
+            addfood(state,data) {
                 state.carfood.push(data)
+                // 算购物车总价
+                state.sumprice=0
+                for(let i=0;i<state.carfood.length;i++) {
+                        let a=state.carfood[i].item.price*state.carfood[i].number
+                        state.sumprice+=a
+                }
                 console.log(state.carfood)
+                console.log(state.sumprice)
+
             }
 
          },

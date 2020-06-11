@@ -8,7 +8,10 @@
       </el-badge>
 
     <!-- 购物车组件 -->
-    <shopcar v-show="showcar" class="shopcar" style=""></shopcar>
+    <shopcar v-show="showcar" class="shopcar" ></shopcar>
+
+    <!-- 遮罩层 -->
+    <div  v-show="showcar" class="zhezhaoc" @click="showcar=!showcar"> </div>
 
       <!-- 最顶的 点返回的 -->
       <span class="topshopname" >
@@ -124,7 +127,7 @@ export default {
         };
    },
    store,
-   computed:mapState(['num']),
+   computed:mapState(['num','carfood']),
    components:{
       shopcar
    },
@@ -171,14 +174,17 @@ export default {
         this.$store.commit('changenum',a)
         //商品信息发给购物车
         let data={number:a,item:item}
-        this.$store.commit('addfoot',data)
+        this.$store.commit('addfood',data)
+        // state.carfood[i].item.price*state.carfood[i].number
+        // console.log(this.carfood)
+        // console.log("1")
       }
    },
    created() {
     
 
      let data1=[
-              {class:'热销',content:[{"id":123,name:'香菇排骨',price:23,number:12,cailiao:'猪肉',img:''},{"id":124,name:'麻辣香锅',price:23,number:12,cailiao:'鸡肉',img:''},{"id":124,name:'麻辣香锅',price:23,number:12,cailiao:'鸡肉'},{"id":124,name:'麻辣香锅',price:23,number:12,cailiao:'鸡肉'},{"id":124,name:'麻辣香锅',price:23,number:12,cailiao:'鸡肉'},{"id":124,name:'麻辣香锅',price:23,number:12,cailiao:'鸡肉'},{"id":124,name:'麻辣香锅',price:23,number:12,cailiao:'鸡肉'},{"id":124,name:'麻辣香锅',price:23,number:12,cailiao:'鸡肉'},{"id":124,name:'麻辣香锅',price:23,number:12,cailiao:'鸡肉'},{"id":124,name:'麻辣香锅',price:23,number:12,cailiao:'鸡肉'}]},
+              {class:'热销',content:[{"id":123,name:'香菇排骨',price:23,number:12,cailiao:'猪肉',img:''},{"id":124,name:'麻辣香锅',price:23,number:12,cailiao:'鸡肉',img:''},{"id":124,name:'麻辣土豆',price:23,number:12,cailiao:'鸡肉'},{"id":124,name:'老坛酸菜鱼',price:23,number:12,cailiao:'鸡肉'},{"id":124,name:'黄焖鸡',price:23,number:12,cailiao:'鸡肉'},{"id":124,name:'番茄炒蛋',price:23,number:12,cailiao:'鸡肉'},{"id":124,name:'青瓜炒肉',price:23,number:12,cailiao:'鸡肉'},{"id":124,name:'麻婆豆腐',price:23,number:12,cailiao:'鸡肉'},{"id":124,name:'烤生蚝',price:23,number:12,cailiao:'鸡肉'},{"id":124,name:'酱爆鱿鱼',price:23,number:12,cailiao:'鸡肉'}]},
               {class:'优惠',content:[{"id":123,name:'香菇排骨',price:23,number:12,cailiao:'猪肉',img:''}]},
               {class:'套餐',content:[{"id":123,name:'香菇排骨',price:23,number:12,cailiao:'猪肉',img:''}]},
               {class:'小吃',content:[{"id":123,name:'香菇排骨',price:23,number:12,cailiao:'猪肉',img:''}]},
@@ -269,6 +275,7 @@ export default {
   position: fixed;
   bottom: 75px;
   right: 36px;
+  z-index:601
 }
 .shopcar {
   z-index:600;
@@ -277,5 +284,13 @@ export default {
   height:70vh;
   right:70px;
   bottom:80px;
+}
+.zhezhaoc {
+  position:absolute;
+  z-index:599;
+  height:100vh;
+  width:100%;
+  background-color:#808080;
+  opacity:0.3
 }
 </style>

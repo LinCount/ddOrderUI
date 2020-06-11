@@ -80,7 +80,7 @@
                                 <el-main style="padding:5px 12px;height:85px">
                                     <el-row :span="8">
                                         <p >
-                                            <span class="info">💗{{item.info[0]}}</span>
+                                            <span class="info"><i class="el-icon-star-on"></i> {{item.info[0]}}</span>
                                             <span class="info">月售{{item.info[1]}}</span>
                                             <span class="info">起送￥{{item.info[2]}}</span>
                                         </p>
@@ -137,10 +137,15 @@ export default {
     created() {
            this.thearea=this.$route.query.thearea;
 
-           this.axios.get('api/shop/getShop')
-            .then(res=>{
-            console.log(res)
-            })
+        //    this.axios.get('api/shop/getShop')
+        //     .then(res=>{
+        //         console.log(res)
+        //         this.data=res.data.data
+        //         console.log(this.data[1].label)
+        //         console.log(this.data[1].label.length)
+
+        //     })
+        //     .catch()
 
     },
     methods:{

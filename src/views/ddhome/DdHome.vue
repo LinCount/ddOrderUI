@@ -55,41 +55,12 @@ export default {
       this.input='你按住了地图';
 
       let odiv = e.target;// 获取目标元素
-      // console.log("鼠标位置和标签边的距离"+e.clientX);
-      // console.log("鼠标位置和标签边的距离"+e.clientY);
-      // 移动端直接使用event.clientX是不起作用的，要使用event.changedTouches[0].clientX才好
-      // console.log("鼠标位置和标签边的距离"+e.changedTouches[0].clientX);
-      // console.log("距离上窗口的位置"+e.pageX);
-      // console.log("标签元素的y轴位置"+e.pageY);
-      // console.log("距离标签上窗口的位置"+e.offsetX);
 
       //x是鼠标位置和标签边的距离，clientX是鼠标点击位置到窗口边上距离、offsetLeft是标签（不算boder、padding、margin）到窗口边的距离
       this.x = e.changedTouches[0].clientX - odiv.offsetLeft;
 			this.y = e.changedTouches[0].clientY - odiv.offsetTop;
         // console.log(x+"-"+y);
       
-      //mousemove鼠标 移动时
-      // document.ontouchmove = (e) => {
-      //   this.input='你拖动了地图';
-      //   console.log("1你拖动了地图");
-      //   //这里的clientX是新的鼠标位置了，left是从点击到移动的距离
-
-      //   let left = e.changedTouches[0].clientX - x;
-      //   let top = e.changedTouches[0].clientY - y;
-      //   console.log(left+"-"+top);
-        
-      //   odiv.style.left = left + "px";
-      //   odiv.style.top = top + "px"
-      // };
-
-      //monmouseup鼠标松开时  注释了没影响目前
-      // document.ontouchend = ()=> {
-      //   this.input='你松开了地图';
-      //   console.log("你松开了地图");
-
-      //   document.touchmove=null;
-      //   document.touchstart=null;
-      // }
     },
     move2 (e){
        let odiv = e.target;// 获取目标元素
@@ -100,6 +71,12 @@ export default {
         let left = e.changedTouches[0].clientX - this.x;
         let top = e.changedTouches[0].clientY - this.y;
         // console.log(left+"-"+top);
+        
+        // Math.abs(aaa) 方法得到绝对值
+        // if(top>图片高度-标签高度)
+        // {
+        //   top=Math.abs(图片高度-标签高度)
+        // }
         
         odiv.style.left = left + "px";
         odiv.style.top = top + "px"

@@ -3,14 +3,15 @@
     <el-card class="box-card" style="height:100%;" body-style="padding:10px" shadow="never" >
         <!-- 头部 -->
         <div slot="header" class="clearfix">
-            <span>已选商品{{carfood[0].number}}</span>
+            <span>已选商品 <span style="font-size:13px;color:#bababa">共{{num}}件</span></span>
             <el-button style="float: right; padding: 3px 0" type="text"   >
                 <i class="el-icon-delete"  style="color:#d91a04;"></i>
                 <span style="color:#d91a04;">清空</span>
             </el-button>
         </div>
         <!-- 主体 -->
-        <div style="">
+        <div >
+            
             <div v-for="(item,i) in carfood" :key="i"  style="height:20vw">
                 <el-container>
                     <el-aside width="18vw">
@@ -40,11 +41,11 @@ export default {
     name:'shopcar',
     data() {
         return {
-
+            sum:0
         }
     },
     store,
-    computed:mapState(['carfood']),
+    computed:mapState(['carfood','num','sumprice']),
 
 }
 </script>
