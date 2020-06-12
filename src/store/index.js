@@ -51,9 +51,14 @@
                         let a=state.carfood[i].item.price*state.carfood[i].number
                         state.sumprice+=a
                 }
-                console.log(state.carfood)
-                console.log(state.sumprice)
+                // console.log(state.carfood)
+                // console.log(state.sumprice)
 
+            },
+            clearcar(state) {
+                state.carfood=''
+                state.num=0
+                state.sumprice=0
             }
 
          },
