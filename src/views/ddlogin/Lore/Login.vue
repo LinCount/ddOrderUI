@@ -1,19 +1,30 @@
 <template>
   <div>
-    
-    <div class="login_bg" >
-      <nav-back  :theme="theme" style="color: black;"/>
+    <div class="login_bg">
+      <nav-back :theme="theme" style="color: black;" />
       <div id="logo">
         <img src="~assets/img/login/logo.png" alt="" />
       </div>
       <form action="">
         <div class="userName">
           <span>账号：</span>
-          <input type="text" name="name" placeholder="请输入用户名" pattern="[0-9A-Za-z]{6,16}" required />
+          <input
+            type="text"
+            name="name"
+            placeholder="请输入用户名"
+            v-model="loginForm.username"
+            pattern="[0-9A-Za-z]{6,16}"
+          />
         </div>
         <div class="passWord">
           <span>密码：</span>
-          <input type="password" name="password" placeholder="请输入密码" pattern="[0-9A-Za-z]{6,25}" required />
+          <input
+            type="password"
+            name="password"
+            placeholder="请输入密码"
+            v-model="loginForm.pwd"
+            pattern="[0-9A-Za-z]{6,25}"
+          />
         </div>
         <div class="choose_box">
           <div>
@@ -22,7 +33,7 @@
           </div>
           <a @click="forgetpassword()">忘记密码</a>
         </div>
-        <button class="login_btn" type="submit" @click="tabback()">
+        <button class="login_btn" @click="tabback">
           登&nbsp;&nbsp;录
         </button>
       </form>
@@ -48,29 +59,65 @@
 <script>
 import NavBack from "components/content/navback/NavBack";
 
+import { login } from "network/login";
+
 export default {
   name: "Login",
   components: {
     NavBack
   },
-   data(){
-     return{
-     theme:{'title':'欢迎登录','backrouter':'/indexlogin'}}
-   },
-  methods:{
+  created() {},
+  data() {
+    return {
+      theme: { title: "欢迎登录", backrouter: "/indexlogin" },
+      loginForm: {
+        username: "",
+        pwd: ""
+      }
+    };
+  },
+  methods: {
     tabback() {
-      
-      this.$router.replace("/home");
-      this.$store.commit('loginState')
-      this.$store.commit('showMainBar')
-      
-
+      if (this.loginForm.username === "" || this.loginForm.pwd === "") {
+        this.$message({
+          type: "warning",
+          message: "请输入用户名或密码"
+        });
+      } else {
+        const username = this.loginForm.username;
+        const pwd = this.loginForm.pwd;
+        login(username, pwd).then(
+          res => {
+            console.log(res);
+            if (res.data.data.token) {
+              // 存储在本地的localStograge中，可以使用cookies/local/sessionStograge
+              this.$store.commit("loginCommit", res.data.data.token);
+              this.$store.commit("adduser",{username,pwd});
+            }
+            if (res.data.code === 200) {
+              setTimeout(() => {
+                this.$store.commit("loginState");
+                this.$store.commit("showMainBar");
+                this.$router.replace("/home");
+              }, 1000);
+            } else {
+              this.$message({
+                type: "warning",
+                message: "用户名或密码错误"
+              });
+            }
+          },
+          err => {
+            console.log(err);
+          }
+        );
+      }
     },
+
     forgetpassword() {
       this.$router.replace("/forgetpass");
     }
   }
 };
 </script>
-<style src="assets/css/lore.css" scoped>
-</style>
+<style src="assets/css/lore.css" scoped></style>

@@ -5,8 +5,8 @@
       <h3 @click="login()">请登录</h3>     
     </div>
     <div v-else class="nav-h" >
-      <h3>{{ this.$store.state.profilenews.name }}</h3>
-      <p>{{ this.$store.state.profilenews.nickname }}</p>
+      <h3>{{ this.$store.state.userpofile.username }}</h3>
+      <p>{{ this.$store.state. userpofile.pwd }}</p>
     </div>
   </div>
 </template>
@@ -15,7 +15,7 @@ export default {
   name: "NavProfile",
   methods:{
       login(){
-          this.$router.replace('/indexlogin')
+          this.$router.push('/indexlogin')
           this.$store.commit('hiddenMainBar')
           
       }

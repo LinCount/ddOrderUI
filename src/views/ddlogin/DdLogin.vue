@@ -1,5 +1,6 @@
 <template>
   <div class="login_bg">
+    <nav-back :theme="theme" style="color: black;" />
     <div id="logo">
       <img src="~assets/img/login/logo.png" alt="" />
     </div>
@@ -24,8 +25,17 @@
   </div>
 </template>
 <script>
+import NavBack from "components/content/navback/NavBack";
 export default {
   name: "DdLogin",
+  components:{
+    NavBack
+  },
+  data(){
+    return{
+      theme: { title: "", backrouter: "/profile" },
+    }
+  },
   methods: {
     tologin() {
       this.$router.replace("/login");

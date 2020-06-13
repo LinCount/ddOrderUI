@@ -5,7 +5,7 @@ import store from './store'
 import axios from 'axios'
 
 Vue.prototype.axios = axios
-axios.defaults.baseURL = "http://localhost:8080/"
+axios.defaults.baseURL = "/api"
 
 Vue.config.productionTip = false
 new Vue({
@@ -14,3 +14,4 @@ new Vue({
   store,
   axios
 }).$mount('#app')
+

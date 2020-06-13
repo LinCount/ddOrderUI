@@ -92,6 +92,7 @@ export default {
       this.$router.replace('/profile')
       this.$store.commit('showMainBar')
       this.$store.commit('noLoginState')
+      localStorage.token = ''
       
 
     }
