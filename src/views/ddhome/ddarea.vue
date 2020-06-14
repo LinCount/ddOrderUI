@@ -61,12 +61,14 @@
                         </el-dropdown>
                     </el-col>
 
+                    <!-- 视图切换 -->
                     <el-col :span="3" style="text-align:center">
-                        <i class="el-icon-picture-outline" style="font-size:20px;line-height:35px"></i>
+                        <i class="el-icon-picture-outline" @click="showpicture=!showpicture" style="font-size:20px;line-height:35px"></i>
                     </el-col>
                 </div>
 
-                <div class="product">
+                <!-- 商品列表 -->
+                <div class="product" v-show="!showpicture">
                     <div v-for="item in data" :key="item.id" style="overflow:hidden" @click="$router.push(`/shop/${item.id}`,)">
                         <el-container style="height: 120px; border: 1px solid #eee">
                             <el-aside width="120px">
@@ -103,6 +105,11 @@
                         
                     </div>
                 </div>
+
+                <!-- 场景视图 -->
+                <div v-show="showpicture">
+                    <img src="~assets/img/index/map.png" style="overflow:hidden;">
+                </div>
                 
             </el-main>
         </el-container>
@@ -116,6 +123,7 @@ export default {
     name:'ddarea',
     data() {
         return {
+            showpicture:false,
             item:[
                 require('../../../src/assets/img/home/fanhui.png'),
                 require('../../../src/assets/img/home/top.png'),
@@ -137,6 +145,8 @@ export default {
     created() {
            this.thearea=this.$route.query.thearea;
 
+
+        // 创新课接口
         //    this.axios.get('api/shop/getShop')
         //     .then(res=>{
         //         console.log(res)
@@ -146,6 +156,12 @@ export default {
 
         //     })
         //     .catch()
+
+        //移动课接口
+        this.axios.get('look/shop')
+        .then(res=>{
+            console.log(res)
+        })
 
     },
     methods:{

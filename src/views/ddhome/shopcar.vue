@@ -26,8 +26,8 @@
             </div>
         </div>
         <div class="bottom" >
-            <span style="line-height:40px;font-weight:600">总计 1800 元</span>
-            <el-button type="primary" plain style="float:right" size='small'>下单</el-button>
+            <span style="line-height:40px;font-weight:600">总计 {{sumprice}} 元</span>
+            <el-button @click="pay(sumprice)" type="primary" plain style="float:right" size='small'>下单</el-button>
         </div>
     </el-card>
   </div>
@@ -46,6 +46,16 @@ export default {
     },
     store,
     computed:mapState(['carfood','num','sumprice']),
+    methods:{
+        //提示支付成功，把所有订单传后端保存，清空购物车
+        pay(sumprice) {
+            this.$alert(`成功支付${sumprice}元，祝您用餐愉快`, '支付成功', {
+            confirmButtonText: '确定',
+            });
+
+        this.$store.commit('clearcar')
+      }
+    }
 
 }
 </script>
