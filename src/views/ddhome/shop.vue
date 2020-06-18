@@ -174,13 +174,20 @@ export default {
         this.$store.commit('changenum',a)
         //商品信息发给购物车
         let data={number:a,item:item}
+        console.log(data)
+
         this.$store.commit('addfood',data)
         // state.carfood[i].item.price*state.carfood[i].number
-        // console.log(this.carfood)
+        console.log(this.carfood)
         // console.log("1")
       }
    },
    created() {
+     let id=this.$route.params.id
+     this.axios.get(`/product/${id}`)
+     .then(res=>{
+       console.log(res)
+     })
     
 
      let data1=[

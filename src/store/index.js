@@ -5,8 +5,8 @@ Vue.use(Vuex);
 
 const store = new Vuex.Store({
   state: {
-    //购物车数据 【 {number,item:[{菜名...}],
-    //             {number,item:[{菜名...}]
+    //购物车数据 【 {number,item:{菜名...},
+    //             {number,item:{菜名...}
     //          】
     carfood: [],
     //购物车总量

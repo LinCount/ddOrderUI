@@ -1,6 +1,6 @@
 <template>
     <div class="ddarea">
-        <el-container style="height:600px">
+        <el-container style="height:100vh">
 
             <el-header height="44px" style="padding:0px">
                     <span style="font-size:18px;line-height:44px;margin-left:10px">
@@ -130,13 +130,13 @@ export default {
                require(' ../../../src/assets/img/home/user.png'),
             ],
             data:[
-                {id:1134,img:'../../../src/assets/img/home/user.png',shopname:'杨国富',info:[4.2,648,13],label:['汤/面'],activities:['满200减55','满100减22','满50减10']},
-                {id:1135,img:'../../../src/assets/img/home/user.png',shopname:'食为鲜',info:[4.2,648,13],label:['汤/面'],activities:['满200减55','满100减22','满50减10']},
-                {id:1136,img:'../../../src/assets/img/home/user.png',shopname:'朵儿料理',info:[4.2,648,13],label:['汤/面'],activities:['满200减55','满100减22','满50减10']},
-                {id:1137,img:'../../../src/assets/img/home/user.png',shopname:'大东烧烤',info:[4.2,648,13],label:['汤/面'],activities:['满200减55','满100减22','满50减10']},
-                {id:1138,img:'../../../src/assets/img/home/user.png',shopname:'这是一家比较美味的杨国富',info:[4.2,648,13],label:['汤/面'],activities:['满200减55','满100减22','满50减10']},
-                {id:1139,img:'../../../src/assets/img/home/user.png',shopname:'这是一家比较美味的杨国富',info:[4.2,648,13],label:['汤/面'],activities:['满200减55','满100减22','满50减10']},
-                {id:1133,img:'../../../src/assets/img/home/user.png',shopname:'这是一家比较美味的杨国富',info:[4.2,648,13],label:['汤/面'],activities:['满200减55','满100减22','满50减10']}
+                // {id:1134,img:'../../../src/assets/img/home/user.png',shopname:'杨国富',info:[4.2,648,13],label:['汤/面'],activities:['满200减55','满100减22','满50减10']},
+                // {id:1135,img:'../../../src/assets/img/home/user.png',shopname:'食为鲜',info:[4.2,648,13],label:['汤/面'],activities:['满200减55','满100减22','满50减10']},
+                // {id:1136,img:'../../../src/assets/img/home/user.png',shopname:'朵儿料理',info:[4.2,648,13],label:['汤/面'],activities:['满200减55','满100减22','满50减10']},
+                // {id:1137,img:'../../../src/assets/img/home/user.png',shopname:'大东烧烤',info:[4.2,648,13],label:['汤/面'],activities:['满200减55','满100减22','满50减10']},
+                // {id:1138,img:'../../../src/assets/img/home/user.png',shopname:'这是一家比较美味的杨国富',info:[4.2,648,13],label:['汤/面'],activities:['满200减55','满100减22','满50减10']},
+                // {id:1139,img:'../../../src/assets/img/home/user.png',shopname:'这是一家比较美味的杨国富',info:[4.2,648,13],label:['汤/面'],activities:['满200减55','满100减22','满50减10']},
+                // {id:1133,img:'../../../src/assets/img/home/user.png',shopname:'这是一家比较美味的杨国富',info:[4.2,648,13],label:['汤/面'],activities:['满200减55','满100减22','满50减10']}
             ],
             foodclass:['快餐','早餐','烧烤','汤/面','小炒','小吃'],
             thearea:'新饭',
@@ -144,24 +144,27 @@ export default {
     },
     created() {
            this.thearea=this.$route.query.thearea;
+            let area=this.thearea
 
+            console.log(area)
 
         // 创新课接口
-        //    this.axios.get('api/shop/getShop')
-        //     .then(res=>{
-        //         console.log(res)
-        //         this.data=res.data.data
-        //         console.log(this.data[1].label)
-        //         console.log(this.data[1].label.length)
+           this.axios.get(`shop/getShop?area=${area}`)
+            .then(res=>{
+                console.log(res)
+                this.data=res.data.data
+                // console.log(this.data[1].label)
+                // console.log(this.data[1].label.length)
 
-        //     })
-        //     .catch()
+            })
+            .catch()
 
         //移动课接口
-        this.axios.get('look/shop')
-        .then(res=>{
-            console.log(res)
-        })
+        // this.axios.get('look/shop')
+        // .then(res=>{
+        //     this.data=res.data
+        //     console.log(this.data)
+        // })
 
     },
     methods:{
