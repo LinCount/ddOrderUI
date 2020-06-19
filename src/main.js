@@ -6,6 +6,7 @@ import axios from 'axios'
 
 Vue.prototype.axios = axios
 axios.defaults.baseURL = "/api"
+// axios.defaults.baseURL = "http://112.74.58.188:8080/"
 //3000实验端口
 // axios.defaults.baseURL = "http://localhost:3000/"
 
