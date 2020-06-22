@@ -1,4 +1,5 @@
 module.exports = {
+    productionSourceMap: false,//打包之后不生成map文件
     publicPath:'./',//打包时把路径改为././
     devServer: {
         proxy:{
@@ -28,6 +29,7 @@ module.exports = {
             'element-ui':'ELEMENT',
             // 'jquery':'jQuery'
             'jquery' : '$',
+            // 'echarts': 'echarts'
         }
     },
 
