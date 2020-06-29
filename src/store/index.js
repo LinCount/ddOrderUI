@@ -56,6 +56,7 @@ const store = new Vuex.Store({
       state.set = true;
     },
     addfood(state, data) {
+      //加入购物车
       state.carfood.push(data);
       // 算购物车总价
       state.sumprice = 0;

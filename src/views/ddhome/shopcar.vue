@@ -49,6 +49,18 @@ export default {
     methods:{
         //提示支付成功，把所有订单传后端保存，清空购物车
         pay(sumprice) {
+            //构造数据
+            let data={userid:'',shopid:'',shopname:'',number:'',item:[]}
+            data.shopid = this.$route.params.id
+            data.number=this.num
+            for(let i=0;i<this.carfood.length;i++) {
+                data.item[i]=this.carfood[i].item
+            }
+            console.log(data)
+            // console.log(this.carfood)
+
+
+
             this.$alert(`成功支付${sumprice}元，祝您用餐愉快`, '支付成功', {
             confirmButtonText: '确定',
             });
