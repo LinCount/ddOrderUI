@@ -102,7 +102,9 @@ export default {
         const pwd = this.loginForm.pwd;
         register(username, pwd).then(
           res => {
-            if (res.msg === "注册成功") {
+              // console.log(res.data.msg)
+
+            if (res.data.msg == "注册成功") {
               this.$message({
                 type: "success",
                 message: "注册成功"
