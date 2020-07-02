@@ -87,10 +87,10 @@
                                             <span class="info">起送￥{{item.info[2]}}</span>
                                         </p>
                                     </el-row>
-                                    <el-row :span="8">
-                                        <P style="margin-top:3px">
+                                    <el-row :span="8" style="overflow:hidden">
+                                        <!-- <P style="margin-top:3px;overflow:hidden" > -->
                                             <span v-for="(items,i) in item.label" :key="i" class="label" >{{items}}</span> 
-                                        </P>
+                                        <!-- </P> -->
                                     </el-row>
                                     <el-row :span="8">
                                         <P style="margin-top:3px">

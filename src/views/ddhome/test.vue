@@ -1,13 +1,13 @@
 <template>
     <div>
-        <div id="main1" style="widht:400px;height:400px"></div>
+        <!-- <div id="main1" style="widht:400px;height:400px"></div> -->
         <div id="main2" style="widht:400px;height:400px"></div>
     </div>
 </template>
 
 <script>
 require("echarts/lib/chart/pie");
-require('echarts/lib/chart/bar')
+// require('echarts/lib/chart/bar')
 
 
 // 引入提示框和title组件
@@ -23,39 +23,44 @@ export default {
         }
     },
     methods: {
-      crateEchartbar() {
-          let echarts = require('echarts/lib/echarts')
+    //   crateEchartbar() {
+    //       let echarts = require('echarts/lib/echarts')
 
-          let mychart=echarts.init(document.getElementById("main1"));
+    //       let mychart=echarts.init(document.getElementById("main1"));
 
-          let option= {
-              title:{text:'入门实例'},
-              legend:{
-                  data:['销量']
-              },
-              xAxis:{
-                  data:['衬衫','羊毛衫','雪纺衫','百褶裙','上衣','裤子']
-              },
-              yAxis:{
+    //       let option= {
+    //           title:{text:'入门实例'},
+    //           legend:{
+    //               data:['销量']
+    //           },
+    //           xAxis:{
+    //               data:['衬衫','羊毛衫','雪纺衫','百褶裙','上衣','裤子']
+    //           },
+    //           yAxis:{
 
-              },
-              series:[{
-                  name:'销量',
-                  type:'bar',
-                  data:[5,12,27,48]
-              }]
-          }
+    //           },
+    //           series:[{
+    //               name:'销量',
+    //               type:'bar',
+    //               data:[5,12,27,48]
+    //           }]
+    //       }
 
-          mychart.setOption(option);
-      },
+    //       mychart.setOption(option);
+    //   },
       crateEchartbpie() {
+          this.axios.get('/order/echartsData?userid=123')
+          .then(res=> {
+              console.log(res)
+          })
+
           let echarts = require('echarts/lib/echarts')
 
           let mychart=echarts.init(document.getElementById("main2"));
 
           let option = {
             title: {
-                text: '类型分布',
+                // text: '类型分布',
                 left: 'center'
             },
             //提示信息，指着时候的提示信息
@@ -114,7 +119,7 @@ export default {
       }
     },
     mounted () {
-        this.crateEchartbar()
+        // this.crateEchartbar()
         this.crateEchartbpie()
     }
 }

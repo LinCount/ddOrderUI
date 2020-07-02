@@ -174,7 +174,7 @@ export default {
         this.$store.commit('changenum',a)
         //商品信息发给购物车
         let data={number:a,item:item}
-        // console.log(data)
+        console.log(data)
 
         this.$store.commit('addfood',data)
         // state.carfood[i].item.price*state.carfood[i].number

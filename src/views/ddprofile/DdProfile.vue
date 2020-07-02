@@ -4,7 +4,8 @@
     <nav-profile />
     <body-profile />
     <div class="navhead">近期食物营养成分分析</div>
-    <img src="~assets/img/profile/timg.jpg" alt="营养成分分析图" />
+    <!-- <img src="~assets/img/profile/timg.jpg" alt="营养成分分析图" /> -->
+    <test></test>
   </div>
 </template>
 
@@ -13,13 +14,15 @@ import NavBar from "components/content/navbar/NavBar";
 
 import NavProfile from "./childprofile/NavProfile";
 import BodyProfile from "./childprofile/BodyProfile";
+import test from '@/views/ddhome/test'
 
 export default {
   name: "Profile",
   components: {
     NavBar,
     NavProfile,
-    BodyProfile
+    BodyProfile,
+    test
   },
   data() {
     return {};

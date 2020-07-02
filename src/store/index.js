@@ -68,7 +68,7 @@ const store = new Vuex.Store({
       // console.log(state.sumprice)
     },
     clearcar(state) {
-      state.carfood = "";
+      state.carfood = [];
       state.num = 0;
       state.sumprice = 0;
     }
