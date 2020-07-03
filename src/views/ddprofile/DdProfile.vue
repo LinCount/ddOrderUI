@@ -57,4 +57,11 @@ img {
   width: 96%;
   overflow: hidden;
 }
+.nav-bar{
+  position: fixed;
+  right: 0;
+  left: 0;
+  top: 0;
+  z-index: 20px;
+}
 </style>

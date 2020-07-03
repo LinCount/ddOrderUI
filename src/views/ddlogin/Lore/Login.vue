@@ -90,9 +90,10 @@ export default {
           res => {
             console.log(res);
             if (res.data.data.token) {
+              const uid = res.data.data.uid;
               // 存储在本地的localStograge中，可以使用cookies/local/sessionStograge
               this.$store.commit("loginCommit", res.data.data.token);
-              this.$store.commit("adduser",{username,pwd});
+              this.$store.commit("adduser",{username,pwd,uid});
             }
             if (res.data.code === 200) {
               setTimeout(() => {

@@ -47,7 +47,8 @@ export default {
 </script>
 <style scoped>
 .bodynav{
-    margin-top:20px ;
+    margin-top:10px ;
+	border-top: 5px solid rgba(236, 240, 241,.5);
 }
 .bodyhead{
     display: flex;
@@ -55,6 +56,7 @@ export default {
     line-height: 30px;
     margin-left: 20px;
     margin-right: 20px;
+	margin-top: 10px;
     
 }
 .left .right {

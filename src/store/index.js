@@ -19,7 +19,8 @@ const store = new Vuex.Store({
     nologin: true,
     userpofile: {
       username: "",
-      pwd: ""
+      pwd: "",
+      uid:''
     }
   },
   mutations: {
@@ -46,6 +47,7 @@ const store = new Vuex.Store({
     adduser(state, user) {
       state.userpofile.username = user.username;
       state.userpofile.pwd = user.pwd;
+      state.userpofile.uid = user.uid;
     },
 
     //控件菜单隐藏
