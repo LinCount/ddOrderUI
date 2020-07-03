@@ -91,7 +91,7 @@ export default {
           message: "手机号或密码不能为空"
         });
       } else if (this.loginForm.pwd !== this.loginForm.repwd) {
-        console.log(this.loginForm.repwd);
+        // console.log(this.loginForm.repwd);
 
         this.$message({
           type: "warning",

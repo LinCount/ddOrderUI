@@ -1,15 +1,17 @@
 <template>
     <div>
+        <!-- <p>-{{userpofile.uid}}-</p> -->
         <!-- <div id="main1" style="widht:400px;height:400px"></div> -->
         <div id="main2" style="widht:400px;height:400px"></div>
     </div>
 </template>
 
 <script>
+import store from '@/store/index'
+import {mapState} from 'vuex'
+
 require("echarts/lib/chart/pie");
 // require('echarts/lib/chart/bar')
-
-
 // 引入提示框和title组件
 require('echarts/lib/component/tooltip')
 require('echarts/lib/component/title')
@@ -22,34 +24,11 @@ export default {
 
         }
     },
+    store,
+    computed:mapState(['userpofile']),
     methods: {
-    //   crateEchartbar() {
-    //       let echarts = require('echarts/lib/echarts')
-
-    //       let mychart=echarts.init(document.getElementById("main1"));
-
-    //       let option= {
-    //           title:{text:'入门实例'},
-    //           legend:{
-    //               data:['销量']
-    //           },
-    //           xAxis:{
-    //               data:['衬衫','羊毛衫','雪纺衫','百褶裙','上衣','裤子']
-    //           },
-    //           yAxis:{
-
-    //           },
-    //           series:[{
-    //               name:'销量',
-    //               type:'bar',
-    //               data:[5,12,27,48]
-    //           }]
-    //       }
-
-    //       mychart.setOption(option);
-    //   },
       crateEchartbpie() {
-          this.axios.get('/order/echartsData?userid=123')
+          this.axios.get(`/order/echartsData?userid=${this.userpofile.uid}`)
           .then(res=> {
               console.log(res)
           })
@@ -119,7 +98,6 @@ export default {
       }
     },
     mounted () {
-        // this.crateEchartbar()
         this.crateEchartbpie()
     }
 }
