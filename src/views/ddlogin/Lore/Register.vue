@@ -32,25 +32,22 @@
             v-model="loginForm.pwd"
             required
           />
-          <input
+          <!-- <input
             type="text"
             placeholder="输入验证码"
             pattern="[0-9]{6}"
             required
-          />
+          /> -->
           <div class="icons">
-            <b><img src="~assets/img/login/zc-1.jpg" alt=""/></b>
-            <b style="margin-top:18px"
-              ><img src="~assets/img/login/zc-2.jpg" alt=""
-            /></b>
-            <b style="margin-top:28px"
+            <b style="margin-top:5px"><img src="~assets/img/login/zc-1.jpg" alt=""/></b>
+            <b style="margin-top:20px"
               ><img src="~assets/img/login/zc-3.jpg" alt=""
             /></b>
-            <b style="margin-top:38px"
+            <b style="margin-top:45px"
               ><img src="~assets/img/login/zc-3.jpg" alt=""
             /></b>
           </div>
-          <a class="code-one" href="" required>获取验证码</a>
+          <!-- <a class="code-one" href="" required>获取验证码</a> -->
         </div>
         <div class="agree">
           <input type="checkbox" /><span>&nbsp;同意&nbsp;</span

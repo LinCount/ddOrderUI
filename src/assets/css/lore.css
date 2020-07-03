@@ -195,16 +195,13 @@ body{
     width: 100%;
   }
   .message .icons b:nth-child(2){
-    width: 5%;
-    top: 26%;
-    left: 6%;
+
+    top: 30%;
   }
   .message .icons b:nth-child(3){
-    top: 43%;
+    top: 45%;
   }
-  .message .icons b:nth-child(4){
-    top: 61%;
-  }
+
   .code{
     position: absolute;
     top: 36%;
