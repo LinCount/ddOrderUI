@@ -53,8 +53,8 @@
                         @close="handleClose"
                         style="width:28vW">
                         <!-- 把分类下标值赋给x -->
-                        <el-menu-item index="2" v-for="(item,i) in data" :key="i" @click="x=i;">
-                          <span slot="title">{{item.class}}</span>
+                        <el-menu-item index="2" v-for="(item,i) in data1" :key="i" @click="x=i;">
+                          <span slot="title">{{item.type}}{{x}}</span>
                         </el-menu-item>
                       </el-menu>
                     </div>
@@ -63,7 +63,7 @@
 
               <!-- 右边选菜品的 -->
               <el-main style="widh:60vw;padding:0px;">
-                <div v-for="(item,i) in data[x].content" :key="i" style="height:120px;margin:15px 0">
+                <div v-for="(item,i) in data1[x].content" :key="i" style="height:120px;margin:15px 0">
                   <el-container>
                     <!-- 店铺图片 -->
                     <el-aside style="width:20vw;height:100px">
@@ -116,14 +116,16 @@ export default {
         return {
           // 展示购物车
           showcar:false,
-          //每个商品选购数二维数组
+          //每个商品选购数二维数组,存放选购数的
           arry:[],
           // 购物车总数
             // num:0,放vuex去了
           // 菜品分类左边的下标
             x:0,
           //菜品数据
-            data:[],
+            data1:[
+              {content:''}
+            ],
         };
    },
    store,
@@ -183,34 +185,38 @@ export default {
       }
    },
    created() {
-     let id=this.$route.params.id
+    //  let id=this.$route.params.id
+     let id=12351
      this.axios.get(`/product/getProduct?id=${id}`)
      .then(res=>{
-       console.log(res)
-     })
-    
+       this.data1=res.data.data
+      //  console.log(this.data1)
 
-     let data1=[
-              {class:'热销',content:[{"id":123,name:'香菇排骨',price:23,number:12,cailiao:'猪肉',img:''},{"id":124,name:'麻辣香锅',price:23,number:12,cailiao:'鸡肉',img:''},{"id":124,name:'麻辣土豆',price:23,number:12,cailiao:'鸡肉'},{"id":124,name:'老坛酸菜鱼',price:23,number:12,cailiao:'鸡肉'},{"id":124,name:'黄焖鸡',price:23,number:12,cailiao:'鸡肉'},{"id":124,name:'番茄炒蛋',price:23,number:12,cailiao:'鸡肉'},{"id":124,name:'青瓜炒肉',price:23,number:12,cailiao:'鸡肉'},{"id":124,name:'麻婆豆腐',price:23,number:12,cailiao:'鸡肉'},{"id":124,name:'烤生蚝',price:23,number:12,cailiao:'鸡肉'},{"id":124,name:'酱爆鱿鱼',price:23,number:12,cailiao:'鸡肉'}]},
-              {class:'优惠',content:[{"id":123,name:'香菇排骨',price:23,number:12,cailiao:'猪肉',img:''}]},
-              {class:'套餐',content:[{"id":123,name:'香菇排骨',price:23,number:12,cailiao:'猪肉',img:''}]},
-              {class:'小吃',content:[{"id":123,name:'香菇排骨',price:23,number:12,cailiao:'猪肉',img:''}]},
-              {class:'饮料',content:[{"id":123,name:'香菇排骨',price:23,number:12,cailiao:'猪肉',img:''},{"id":124,name:'麻辣香锅',price:23,number:12,cailiao:'鸡肉',img:''}]},
-            ]
-      this.data=data1;
+      //构造二维数组
 
       let arry1= new Array()
-      for(let i=0;i<data1.length;i++) {
+      for(let i=0;i<this.data1.length;i++) {
          arry1[i]=new Array()
-          for( let y=0;y<data1[i].content.length;y++) {
+          for( let y=0;y<this.data1[i].content.length;y++) {
             //  arry1[i][y]=1;
              this.$set(arry1[i],y,1)
           }
       }
-
       this.arry=arry1;
-      // 正常
       // console.log(this.arry)
+     })
+    
+
+    //  let data1=[
+    //           {class:'热销',content:[{"id":123,name:'香菇排骨',price:23,number:12,cailiao:'猪肉',img:''},{"id":124,name:'麻辣香锅',price:23,number:12,cailiao:'鸡肉',img:''},{"id":124,name:'麻辣土豆',price:23,number:12,cailiao:'鸡肉'},{"id":124,name:'老坛酸菜鱼',price:23,number:12,cailiao:'鸡肉'},{"id":124,name:'黄焖鸡',price:23,number:12,cailiao:'鸡肉'},{"id":124,name:'番茄炒蛋',price:23,number:12,cailiao:'鸡肉'},{"id":124,name:'青瓜炒肉',price:23,number:12,cailiao:'鸡肉'},{"id":124,name:'麻婆豆腐',price:23,number:12,cailiao:'鸡肉'},{"id":124,name:'烤生蚝',price:23,number:12,cailiao:'鸡肉'},{"id":124,name:'酱爆鱿鱼',price:23,number:12,cailiao:'鸡肉'}]},
+    //           {class:'优惠',content:[{"id":123,name:'香菇排骨',price:23,number:12,cailiao:'猪肉',img:''}]},
+    //           {class:'套餐',content:[{"id":123,name:'香菇排骨',price:23,number:12,cailiao:'猪肉',img:''}]},
+    //           {class:'小吃',content:[{"id":123,name:'香菇排骨',price:23,number:12,cailiao:'猪肉',img:''}]},
+    //           {class:'饮料',content:[{"id":123,name:'香菇排骨',price:23,number:12,cailiao:'猪肉',img:''},{"id":124,name:'麻辣香锅',price:23,number:12,cailiao:'鸡肉',img:''}]},
+    //         ]
+    //   this.data=data1;
+
+
    }
 }
 </script>

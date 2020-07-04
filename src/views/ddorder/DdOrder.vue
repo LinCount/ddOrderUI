@@ -245,7 +245,7 @@ export default {
     },
     //创建订单
     createOrder() {
-      orderdata(this.$store.state.userpofile.uid).then(
+      orderdata(1121).then(
         res => {
           console.log(res);
         },

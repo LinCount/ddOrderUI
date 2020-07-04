@@ -14,6 +14,7 @@ export function request(config) {
       if (localStorage.token) {
         config.headers.Authorization = `token ${localStorage.token}`;
       }
+      console.log(config);
       return config;
     },
     err => {
@@ -24,7 +25,7 @@ export function request(config) {
   // 2.2.响应拦截
   instance.interceptors.response.use(
     res => {
-      console.log(res);
+
       return res;
     },
     err => {

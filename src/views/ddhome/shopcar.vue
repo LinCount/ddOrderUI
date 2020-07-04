@@ -57,18 +57,22 @@ export default {
                 aa.item=this.carfood[i].item
                 data[i]=aa
             }
-            console.log(data)
+            // console.log(data)
 
 
             // console.log(this.carfood)
 
             this.axios.post('/order/orderCar',data)
             .then(function() {
-                 this.$alert(`成功支付${sumprice}元，祝您用餐愉快`, '支付成功', {
+                this.$alert(`成功支付${sumprice}元，祝您用餐愉快`, '支付成功', {
                     confirmButtonText: '确定',
                     });
                 
                 this.$store.commit('clearcar')
+            })
+            .catch(res=>{
+                console.log(res)
+
             })
 
            

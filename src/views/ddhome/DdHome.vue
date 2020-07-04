@@ -14,7 +14,7 @@
     <div class="photo">
         <!-- <a href="#">  ismap="ismap"   -->
           <!-- usemap="#map"  -->
-         <img src="~assets/img/index/map.png" @touchstart="move" usemap="#map" class="photo1"   @touchmove="move2">
+         <img src="~assets/img/index/map2.png" @touchstart="move" usemap="#map" class="photo1"   @touchmove="move2">
         <!-- </a> -->
 
          <map name="map">
@@ -136,7 +136,6 @@ export default {
 .photo {
   /* left: 0px; */
   /* height: 100%-44; */
-
   background-color: #f6f6f6;
   /* 应对上固定不随文档流，所以这里也要浮起 */
   position: absolute;
@@ -146,6 +145,7 @@ export default {
   width: 100%;
 }
 .photo1 {
+  height:150%;
   position: relative;
   left:0;
   top:0;
