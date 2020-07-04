@@ -5,12 +5,11 @@
       <div id="logo">
         <img src="~assets/img/login/logo.png" alt="" />
       </div>
-      <form action="">
+      <form>
         <div class="userName">
           <span>账号：</span>
           <input
             type="text"
-            name="name"
             placeholder="请输入用户名"
             v-model="loginForm.username"
           />
@@ -19,7 +18,6 @@
           <span>密码：</span>
           <input
             type="password"
-            name="password"
             placeholder="请输入密码"
             v-model="loginForm.pwd"
           />
@@ -31,10 +29,10 @@
           </div>
           <a @click="forgetpassword()">忘记密码</a>
         </div>
-        <button class="login_btn" @click="tabback">
-          登&nbsp;&nbsp;录
-        </button>
       </form>
+      <button class="login_btn login-button" @click="tabback">
+        登&nbsp;&nbsp;录
+      </button>
       <div class="other_login" style="margin-top:20px">
         <div class="other"></div>
         <span>其他方式登录</span>
@@ -64,7 +62,9 @@ export default {
   components: {
     NavBack
   },
-  created() {},
+  created() {
+    this.$store.commit("hiddenMainBar");
+  },
   data() {
     return {
       theme: { title: "欢迎登录", backrouter: "/indexlogin" },

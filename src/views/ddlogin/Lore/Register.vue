@@ -9,7 +9,7 @@
       <div class="point">
         <span>注册成功后，手机号也可为登录账号。</span>
       </div>
-      <form action="">
+      <form>
         <div class="message">
           <input
             type="tel"
@@ -43,12 +43,13 @@
           </div>
           <!-- <a class="code-one" href="" required>获取验证码</a> -->
         </div>
-        <div class="agree">
-          <input type="checkbox" v-model="loginForm.agree"/><span>&nbsp;同意&nbsp;</span
-          ><a href="">《注册协议》</a>
-        </div>
-        <button class="submit" @click="register()">注册</button>
       </form>
+      <div class="agree">
+        <input type="checkbox" v-model="loginForm.agree" /><span
+          >&nbsp;同意&nbsp;</span
+        ><a href="">《注册协议》</a>
+      </div>
+      <button class="submit" @click="register()">注册</button>
     </div>
   </div>
 </template>
@@ -68,9 +69,12 @@ export default {
         username: "",
         pwd: "",
         repwd: "",
-        agree:''
+        agree: ""
       }
     };
+  },
+  created() {
+    this.$store.commit("hiddenMainBar");
   },
   methods: {
     backindex() {

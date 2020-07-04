@@ -1,8 +1,8 @@
 <template>
   <div class="register">
     <nav-back :theme="theme" style="background: #21a9f5;color:#ffffff" />
-    <div class="content">
-      <form action="">
+    <div class="content" style="margin-top:15%">
+      <form>
         <div class="message">
           <input
             type="tel"
@@ -14,7 +14,6 @@
             type="password"
             v-model="forgetForm.pwd"
             placeholder="请输入新密码"
-
           />
           <input
             type="password"
@@ -35,8 +34,10 @@
             /></b>
           </div>
         </div>
-        <button class="submit"  @click="forgetpassword()">确认提交</button>
       </form>
+      <button class="submit" @click="forgetpassword()" style="margin-top:12%">
+        确认提交
+      </button>
     </div>
   </div>
 </template>
@@ -47,6 +48,9 @@ export default {
   name: "ForgetPass",
   components: {
     NavBack
+  },
+  created() {
+    this.$store.commit("hiddenMainBar");
   },
   data() {
     return {
@@ -85,6 +89,7 @@ export default {
                 type: "success",
                 message: "修改成功"
               });
+              this.$router.replace("/login");
             } else {
               this.$message({
                 type: "warning",
@@ -92,9 +97,9 @@ export default {
               });
             }
 
-            setTimeout(() => {
-              this.$router.replace("/login");
-            }, 1000);
+            // setTimeout(() => {
+            //   this.$router.replace("/login");
+            // }, 1000);
           },
           err => {
             console.log(err);
@@ -113,13 +118,12 @@ export default {
   background: none;
   padding-top: 10%;
 }
-.message input {
-  width: 83%;
-  margin: 0 4%;
-}
-.content form input:not(:nth-child(6)) {
+
+.content form input {
   border: 0;
-  margin-bottom: 8%;
+  margin-bottom: 18%;
+  margin: 0 auto;
+  width: 100%;
 }
 .message .icons b {
   top: 14.5%;
