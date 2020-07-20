@@ -23,7 +23,7 @@
       <div class="intr">
         <el-container style="height:100%">
           <el-aside width="60%" height="100%">
-            <p class="shopname" >爽滑饺子ssss王</p>
+            <p class="shopname" >西关名点</p>
             <span class="activities" v-for="(item,i) in 2" :key="i">满215-2</span>
           </el-aside>
           <el-main style="padding:8px">

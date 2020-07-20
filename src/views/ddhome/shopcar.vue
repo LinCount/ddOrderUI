@@ -98,6 +98,6 @@ export default {
     position:fixed;
     bottom:82px;
     border-radius:3px;
-    width:65%
+    width:65%;
 }
 </style>

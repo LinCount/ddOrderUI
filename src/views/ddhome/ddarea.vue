@@ -128,6 +128,7 @@ export default {
                 require('../../../src/assets/img/home/fanhui.png'),
                 require('../../../src/assets/img/home/top.png'),
                require(' ../../../src/assets/img/home/user.png'),
+               'https://img.alicdn.com/tfs/TB1l6mOMBr0gK0jSZFnXXbRRXXa-520-280.jpg_q90_.webp'
             ],
             data:[
                 // {id:1134,img:'../../../src/assets/img/home/user.png',shopname:'杨国富',info:[4.2,648,13],label:['汤/面'],activities:['满200减55','满100减22','满50减10']},

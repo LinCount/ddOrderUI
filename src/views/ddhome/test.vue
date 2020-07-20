@@ -1,7 +1,8 @@
 <template>
-    <div>
+    <div >
         <!-- <p>-{{userpofile.uid}}-</p> -->
         <!-- <div id="main1" style="widht:400px;height:400px"></div> -->
+        <!-- <div style="z-index:500;height:351px;width:100%;background-color:blue;opacity:0.1;margin-bottom:44px">请登录</div> -->
         <div id="main2" style="widht:400px;height:400px"></div>
     </div>
 </template>
@@ -103,6 +104,5 @@ export default {
 }
 </script>
 
-<style>
-
+<style scope>
 </style>

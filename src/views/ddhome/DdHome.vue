@@ -12,14 +12,13 @@
     </div>
 
     <div class="photo">
-        <!-- <a href="#">  ismap="ismap"   -->
-          <!-- usemap="#map"  -->
-         <img src="~assets/img/index/map2.png" @touchstart="move" usemap="#map" class="photo1"   @touchmove="move2">
+        <!-- <a href="#">    usemap="#map" ismap="ismap"  解开注释，把这两者放在img标签内即可 -->
+         <img src="~assets/img/index/map2.png" @touchstart="move"  class="photo1"   usemap="#map"  @touchmove="move2"   >
         <!-- </a> -->
 
          <map name="map">
-            <area shape="rect" coords="916,85,1125,214" href="javascript:;" alt="hah" @click="newcanteen">
-            <area shape="rect" coords="590,489,808,622" href="javascript:;" alt="hah" @click="oldcanteen">
+            <area shape="rect" coords="273,110,453,227" href="javascript:;" alt="hah" @click="newcanteen">
+            <area shape="rect" coords="311,516,438,664" href="javascript:;" alt="hah" @click="oldcanteen">
         </map>
     </div>
     
