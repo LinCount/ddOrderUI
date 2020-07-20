@@ -83,6 +83,9 @@ export default {
   components: {
     NavBar
   },
+  created(){
+     this.$store.commit("hiddenMainBar");
+  },
   methods:{
     navback(){
       this.$router.replace('/profile')

@@ -9,55 +9,47 @@
       <div class="point">
         <span>注册成功后，手机号也可为登录账号。</span>
       </div>
-      <form action="">
+      <form>
         <div class="message">
           <input
             type="tel"
             placeholder="输入手机号"
             v-model="loginForm.username"
-            pattern="[0-9]{11}"
-            required
           />
           <input
             type="password"
             placeholder="请输入6-25位密码"
-            pattern="[0-9A-Za-z]{6,25}"
             v-model="loginForm.repwd"
-            required
           />
           <input
             type="password"
             placeholder="请再次输入密码"
-            pattern="[0-9A-Za-z]{6,25}"
             v-model="loginForm.pwd"
-            required
           />
-          <input
+          <!-- <input
             type="text"
             placeholder="输入验证码"
-            pattern="[0-9]{6}"
-            required
-          />
+          /> -->
           <div class="icons">
-            <b><img src="~assets/img/login/zc-1.jpg" alt=""/></b>
-            <b style="margin-top:18px"
-              ><img src="~assets/img/login/zc-2.jpg" alt=""
+            <b style="margin-top:5px"
+              ><img src="~assets/img/login/zc-1.jpg" alt=""
             /></b>
-            <b style="margin-top:28px"
+            <b style="margin-top:20px"
               ><img src="~assets/img/login/zc-3.jpg" alt=""
             /></b>
-            <b style="margin-top:38px"
+            <b style="margin-top:45px"
               ><img src="~assets/img/login/zc-3.jpg" alt=""
             /></b>
           </div>
-          <a class="code-one" href="" required>获取验证码</a>
+          <!-- <a class="code-one" href="" required>获取验证码</a> -->
         </div>
-        <div class="agree">
-          <input type="checkbox" /><span>&nbsp;同意&nbsp;</span
-          ><a href="">《注册协议》</a>
-        </div>
-        <button class="submit" @click="register()">注册</button>
       </form>
+      <div class="agree">
+        <input type="checkbox" v-model="loginForm.agree" /><span
+          >&nbsp;同意&nbsp;</span
+        ><a href="">《注册协议》</a>
+      </div>
+      <button class="submit" @click="register()">注册</button>
     </div>
   </div>
 </template>
@@ -76,9 +68,13 @@ export default {
       loginForm: {
         username: "",
         pwd: "",
-        repwd: ""
+        repwd: "",
+        agree: ""
       }
     };
+  },
+  created() {
+    this.$store.commit("hiddenMainBar");
   },
   methods: {
     backindex() {
@@ -89,6 +85,11 @@ export default {
         this.$message({
           type: "warning",
           message: "手机号或密码不能为空"
+        });
+      } else if (!this.loginForm.agree) {
+        this.$message({
+          type: "warning",
+          message: "请详细阅读并同意注册协议"
         });
       } else if (this.loginForm.pwd !== this.loginForm.repwd) {
         // console.log(this.loginForm.repwd);
@@ -102,7 +103,7 @@ export default {
         const pwd = this.loginForm.pwd;
         register(username, pwd).then(
           res => {
-              // console.log(res.data.msg)
+            // console.log(res.data.msg)
 
             if (res.data.msg == "注册成功") {
               this.$message({
@@ -133,5 +134,4 @@ export default {
 .back >>> .login {
   font-family: 华文楷体;
 }
-
 </style>

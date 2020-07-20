@@ -21,3 +21,14 @@ export function register(username,pwd) {
   })
 }
 
+export function forGetPass(username,pwd) {
+  return request({
+    url: '/user/updatepassword',
+    method:'POST',
+    data:{
+      username,
+      pwd,
+    }
+  })
+}
+

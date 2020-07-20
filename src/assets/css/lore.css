@@ -110,6 +110,7 @@ body{
     -moz-box-shadow: #8f9bad 0px 0px 20px;
     box-shadow: #8f9bad 0px 0px 20px;
     text-align: center;
+    
   }
   .other_login{
     width: 80%;
@@ -180,6 +181,7 @@ body{
   }
   .message input{
     width: 90%;
+    margin-left: 5%;
     padding: 4% 0 4% 10%;
     font-size: 0.875em;
     font-family: "Microsoft YaHei";
@@ -189,22 +191,19 @@ body{
     width: 3.75%;
     height: 4%;
     top: 7%;
-    left: 7%;
+    left: 11%;
   }
   .message .icons b img{
     width: 100%;
   }
   .message .icons b:nth-child(2){
-    width: 5%;
-    top: 26%;
-    left: 6%;
+
+    top: 30%;
   }
   .message .icons b:nth-child(3){
-    top: 43%;
+    top: 45%;
   }
-  .message .icons b:nth-child(4){
-    top: 61%;
-  }
+
   .code{
     position: absolute;
     top: 36%;
@@ -231,17 +230,18 @@ body{
     font-family: "Microsoft YaHei";
   }
   .agree{
-    margin: 6% 5%;
+    margin: 6% auto;
+    text-align: center;
   }
   .submit{
-    width: 84%;
-    margin: 2% 8%;
+    width: 70%;
     background: #21a9f5;
     color: #ffffff;
     border: 0;
     padding: 3.25% 0;
     font-size: 1em;
     font-family: "Microsoft YaHei";
+    margin-left: 15%;
   }
   form .agree input[type="checkbox"] :default{
     outline: 2px solid #21a9f5;
@@ -259,4 +259,11 @@ body{
   }
   .other_choose {
     top: 80%;
+  }
+ 
+  /* 补充 */
+  .login-button{
+    position: static;
+    width: 70%;
+    margin: 0 auto;
   }

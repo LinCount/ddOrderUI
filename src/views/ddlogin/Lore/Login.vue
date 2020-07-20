@@ -5,25 +5,21 @@
       <div id="logo">
         <img src="~assets/img/login/logo.png" alt="" />
       </div>
-      <form action="">
+      <form>
         <div class="userName">
           <span>账号：</span>
           <input
             type="text"
-            name="name"
             placeholder="请输入用户名"
             v-model="loginForm.username"
-            pattern="[0-9A-Za-z]{6,16}"
           />
         </div>
         <div class="passWord">
           <span>密码：</span>
           <input
             type="password"
-            name="password"
             placeholder="请输入密码"
             v-model="loginForm.pwd"
-            pattern="[0-9A-Za-z]{6,25}"
           />
         </div>
         <div class="choose_box">
@@ -33,10 +29,10 @@
           </div>
           <a @click="forgetpassword()">忘记密码</a>
         </div>
-        <button class="login_btn" @click="tabback">
-          登&nbsp;&nbsp;录
-        </button>
       </form>
+      <button class="login_btn login-button" @click="tabback">
+        登&nbsp;&nbsp;录
+      </button>
       <div class="other_login" style="margin-top:20px">
         <div class="other"></div>
         <span>其他方式登录</span>
@@ -66,7 +62,9 @@ export default {
   components: {
     NavBack
   },
-  created() {},
+  created() {
+    this.$store.commit("hiddenMainBar");
+  },
   data() {
     return {
       theme: { title: "欢迎登录", backrouter: "/indexlogin" },
@@ -93,7 +91,7 @@ export default {
               const uid = res.data.data.uid;
               // 存储在本地的localStograge中，可以使用cookies/local/sessionStograge
               this.$store.commit("loginCommit", res.data.data.token);
-              this.$store.commit("adduser",{username,pwd,uid});
+              this.$store.commit("adduser", { username, pwd, uid });
             }
             if (res.data.code === 200) {
               setTimeout(() => {
